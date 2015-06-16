@@ -1,3 +1,4 @@
+import Foundation
 
 public class Member: NSObject {
     private(set) public var userID: String!

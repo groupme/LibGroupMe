@@ -34,7 +34,7 @@ class GroupTest: QuickSpec {
                     expect(group.updatedAt).toNot(beNil())
                     expect(group.members).toNot(beNil())
                 }
-            
+            }
         }
     }
 }

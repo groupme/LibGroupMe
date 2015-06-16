@@ -1,5 +1,4 @@
 source 'https://github.com/CocoaPods/Specs.git'
-platform :osx, '10.10'
 use_frameworks!
 
 def application_pods
@@ -15,10 +14,17 @@ end
 
 
 target :LibGroupMe do
+	platform :osx, '10.10'
+	application_pods
+end
+
+target :LibGroupMe_iOS do
+	platform :ios, '8.3'
 	application_pods
 end
 
 target :LibGroupMeTests do
+	platform :osx, '10.10'
 	application_pods
 	test_pods
 end

@@ -8,4 +8,5 @@ Pod::Spec.new do |spec|
   spec.source_files = "LibGroupMe/*.swift"
   spec.framework    = 'Foundation'
   spec.dependency 'Alamofire', '~> 1.2'
+  spec.dependency 'YapDatabase', '~> 2.6'
 end

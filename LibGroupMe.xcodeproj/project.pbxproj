@@ -7,9 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D992DE6EBD174C81CD6D9059 /* Pods_LibGroupMeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3FB2D1D2774242175B3B944 /* Pods_LibGroupMeTests.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		DF140AEBFA652E0301E37BD1 /* Pods_LibGroupMe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4F44BADF49B82F24EAA0883 /* Pods_LibGroupMe.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		FC386CBA1B306880002673B3 /* powerups.json in Resources */ = {isa = PBXBuildFile; fileRef = FC386CB91B306880002673B3 /* powerups.json */; };
+		FC6242601B306692008D2CA7 /* Powerup.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC62425E1B306692008D2CA7 /* Powerup.swift */; };
+		FC6242611B306692008D2CA7 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC62425F1B306692008D2CA7 /* APIClient.swift */; };
+		FC6242661B3066ED008D2CA7 /* PowerupTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6242641B3066ED008D2CA7 /* PowerupTest.swift */; };
+		FC6242671B3066ED008D2CA7 /* APIClientTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6242651B3066ED008D2CA7 /* APIClientTest.swift */; };
 		FCA81AB01B3064B70005B6D7 /* LibGroupMe.h in Headers */ = {isa = PBXBuildFile; fileRef = FCA81AAF1B3064B70005B6D7 /* LibGroupMe.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FCA81AB61B3064B70005B6D7 /* LibGroupMe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCA81AAA1B3064B70005B6D7 /* LibGroupMe.framework */; };
-		FCA81ABD1B3064B70005B6D7 /* LibGroupMeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA81ABC1B3064B70005B6D7 /* LibGroupMeTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -23,12 +29,22 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1A495F6601E26A1FC52C70C4 /* Pods-LibGroupMeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LibGroupMeTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LibGroupMeTests/Pods-LibGroupMeTests.release.xcconfig"; sourceTree = "<group>"; };
+		21E56790B2449319420437F9 /* Pods-LibGroupMeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LibGroupMeTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LibGroupMeTests/Pods-LibGroupMeTests.debug.xcconfig"; sourceTree = "<group>"; };
+		73BED4D30B051642E6BCE975 /* Pods-LibGroupMe.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LibGroupMe.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LibGroupMe/Pods-LibGroupMe.debug.xcconfig"; sourceTree = "<group>"; };
+		B4F44BADF49B82F24EAA0883 /* Pods_LibGroupMe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LibGroupMe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C3FB2D1D2774242175B3B944 /* Pods_LibGroupMeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LibGroupMeTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E49CCE9AD88757B0387918A2 /* Pods-LibGroupMe.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LibGroupMe.release.xcconfig"; path = "Pods/Target Support Files/Pods-LibGroupMe/Pods-LibGroupMe.release.xcconfig"; sourceTree = "<group>"; };
+		FC386CB91B306880002673B3 /* powerups.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = powerups.json; path = "test-data/powerups.json"; sourceTree = "<group>"; };
+		FC62425E1B306692008D2CA7 /* Powerup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Powerup.swift; sourceTree = "<group>"; };
+		FC62425F1B306692008D2CA7 /* APIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		FC6242641B3066ED008D2CA7 /* PowerupTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PowerupTest.swift; sourceTree = "<group>"; };
+		FC6242651B3066ED008D2CA7 /* APIClientTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIClientTest.swift; sourceTree = "<group>"; };
 		FCA81AAA1B3064B70005B6D7 /* LibGroupMe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LibGroupMe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FCA81AAE1B3064B70005B6D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FCA81AAF1B3064B70005B6D7 /* LibGroupMe.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LibGroupMe.h; sourceTree = "<group>"; };
 		FCA81AB51B3064B70005B6D7 /* LibGroupMeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LibGroupMeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FCA81ABB1B3064B70005B6D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FCA81ABC1B3064B70005B6D7 /* LibGroupMeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibGroupMeTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -36,6 +52,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DF140AEBFA652E0301E37BD1 /* Pods_LibGroupMe.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -44,18 +61,49 @@
 			buildActionMask = 2147483647;
 			files = (
 				FCA81AB61B3064B70005B6D7 /* LibGroupMe.framework in Frameworks */,
+				D992DE6EBD174C81CD6D9059 /* Pods_LibGroupMeTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		36F3D44D684E38DD65831FC6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B4F44BADF49B82F24EAA0883 /* Pods_LibGroupMe.framework */,
+				C3FB2D1D2774242175B3B944 /* Pods_LibGroupMeTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		4D0F29ED728327555856A9FF /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				73BED4D30B051642E6BCE975 /* Pods-LibGroupMe.debug.xcconfig */,
+				E49CCE9AD88757B0387918A2 /* Pods-LibGroupMe.release.xcconfig */,
+				21E56790B2449319420437F9 /* Pods-LibGroupMeTests.debug.xcconfig */,
+				1A495F6601E26A1FC52C70C4 /* Pods-LibGroupMeTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		FC6242681B306848008D2CA7 /* test-data */ = {
+			isa = PBXGroup;
+			children = (
+				FC386CB91B306880002673B3 /* powerups.json */,
+			);
+			name = "test-data";
+			sourceTree = "<group>";
+		};
 		FCA81AA01B3064B70005B6D7 = {
 			isa = PBXGroup;
 			children = (
 				FCA81AAC1B3064B70005B6D7 /* LibGroupMe */,
 				FCA81AB91B3064B70005B6D7 /* LibGroupMeTests */,
 				FCA81AAB1B3064B70005B6D7 /* Products */,
+				4D0F29ED728327555856A9FF /* Pods */,
+				36F3D44D684E38DD65831FC6 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -71,6 +119,8 @@
 		FCA81AAC1B3064B70005B6D7 /* LibGroupMe */ = {
 			isa = PBXGroup;
 			children = (
+				FC62425E1B306692008D2CA7 /* Powerup.swift */,
+				FC62425F1B306692008D2CA7 /* APIClient.swift */,
 				FCA81AAF1B3064B70005B6D7 /* LibGroupMe.h */,
 				FCA81AAD1B3064B70005B6D7 /* Supporting Files */,
 			);
@@ -88,7 +138,9 @@
 		FCA81AB91B3064B70005B6D7 /* LibGroupMeTests */ = {
 			isa = PBXGroup;
 			children = (
-				FCA81ABC1B3064B70005B6D7 /* LibGroupMeTests.swift */,
+				FC6242681B306848008D2CA7 /* test-data */,
+				FC6242641B3066ED008D2CA7 /* PowerupTest.swift */,
+				FC6242651B3066ED008D2CA7 /* APIClientTest.swift */,
 				FCA81ABA1B3064B70005B6D7 /* Supporting Files */,
 			);
 			path = LibGroupMeTests;
@@ -120,10 +172,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FCA81AC01B3064B70005B6D7 /* Build configuration list for PBXNativeTarget "LibGroupMe" */;
 			buildPhases = (
+				BB70C325D6BF9A3962DBC61A /* Check Pods Manifest.lock */,
 				FCA81AA51B3064B70005B6D7 /* Sources */,
 				FCA81AA61B3064B70005B6D7 /* Frameworks */,
 				FCA81AA71B3064B70005B6D7 /* Headers */,
 				FCA81AA81B3064B70005B6D7 /* Resources */,
+				88F433DAF3222D1E0BA9253B /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -138,9 +192,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FCA81AC31B3064B70005B6D7 /* Build configuration list for PBXNativeTarget "LibGroupMeTests" */;
 			buildPhases = (
+				E80FA696FD33F1EA37BC2EA1 /* Check Pods Manifest.lock */,
 				FCA81AB11B3064B70005B6D7 /* Sources */,
 				FCA81AB21B3064B70005B6D7 /* Frameworks */,
 				FCA81AB31B3064B70005B6D7 /* Resources */,
+				C56F097742DDF9087A38C86E /* Embed Pods Frameworks */,
+				17038E60BFA455D6158BE40A /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -199,16 +256,97 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FC386CBA1B306880002673B3 /* powerups.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		17038E60BFA455D6158BE40A /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LibGroupMeTests/Pods-LibGroupMeTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		88F433DAF3222D1E0BA9253B /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LibGroupMe/Pods-LibGroupMe-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BB70C325D6BF9A3962DBC61A /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		C56F097742DDF9087A38C86E /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LibGroupMeTests/Pods-LibGroupMeTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E80FA696FD33F1EA37BC2EA1 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		FCA81AA51B3064B70005B6D7 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FC6242601B306692008D2CA7 /* Powerup.swift in Sources */,
+				FC6242611B306692008D2CA7 /* APIClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -216,7 +354,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FCA81ABD1B3064B70005B6D7 /* LibGroupMeTests.swift in Sources */,
+				FC6242661B3066ED008D2CA7 /* PowerupTest.swift in Sources */,
+				FC6242671B3066ED008D2CA7 /* APIClientTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -317,7 +456,9 @@
 		};
 		FCA81AC11B3064B70005B6D7 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 73BED4D30B051642E6BCE975 /* Pods-LibGroupMe.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -329,12 +470,15 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		FCA81AC21B3064B70005B6D7 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E49CCE9AD88757B0387918A2 /* Pods-LibGroupMe.release.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -351,7 +495,9 @@
 		};
 		FCA81AC41B3064B70005B6D7 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 21E56790B2449319420437F9 /* Pods-LibGroupMeTests.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
@@ -364,12 +510,15 @@
 				INFOPLIST_FILE = LibGroupMeTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		FCA81AC51B3064B70005B6D7 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1A495F6601E26A1FC52C70C4 /* Pods-LibGroupMeTests.release.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
@@ -400,6 +549,7 @@
 				FCA81AC21B3064B70005B6D7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		FCA81AC31B3064B70005B6D7 /* Build configuration list for PBXNativeTarget "LibGroupMeTests" */ = {
 			isa = XCConfigurationList;
@@ -408,6 +558,7 @@
 				FCA81AC51B3064B70005B6D7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

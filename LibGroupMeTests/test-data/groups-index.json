@@ -1,6 +1,326 @@
 { 
 "meta": {},
 "response": [
+        {
+            "created_at": 1409263977,
+            "creator_user_id": "10140841",
+            "description": "",
+            "group_id": "9750657",
+            "id": "9750657",
+            "image_url": null,
+            "max_members": 200,
+            "members": [
+                {
+                    "autokicked": false,
+                    "id": "55227600",
+                    "image_url": "https://i.groupme.com/1276x880.jpeg.727d8450df9f013158d822000b208f7b",
+                    "muted": false,
+                    "nickname": "bot stranger",
+                    "user_id": "10140841"
+                },
+                {
+                    "autokicked": false,
+                    "id": "55333916",
+                    "image_url": "http://i.groupme.com/750x750.jpeg.bc1e074f6b0544eca89a0e999766525b",
+                    "muted": true,
+                    "nickname": "Jon <i>Balbarin</i>",
+                    "user_id": "645773"
+                }
+            ],
+            "messages": {
+                "count": 3358,
+                "last_message_created_at": 1434400568,
+                "last_message_id": "143440056863396850",
+                "preview": {
+                    "attachments": [],
+                    "image_url": "",
+                    "nickname": "jjjjj tsterbot",
+                    "text": "JAK added comment:\n\"Fixed in 5.1.4\" to story 'Crash in -[YLGIFImage getFrameWithIndex:]' https://www.pivotaltracker.com/story/show/96543788"
+                }
+            },
+            "name": "jjjjjj",
+            "office_mode": false,
+            "phone_number": "+1 7605017310",
+            "share_url": "https://groupme.com/join_group/9750657/VdhLTI",
+            "type": "private",
+            "updated_at": 1434400568
+        },
+        {
+            "created_at": 1427909496,
+            "creator_user_id": "10140841",
+            "description": "",
+            "group_id": "13217772",
+            "id": "13217772",
+            "image_url": null,
+            "max_members": 200,
+            "members": [
+                {
+                    "autokicked": false,
+                    "id": "81532495",
+                    "image_url": "https://i.groupme.com/1276x880.jpeg.727d8450df9f013158d822000b208f7b",
+                    "muted": false,
+                    "nickname": "bot stranger",
+                    "user_id": "10140841"
+                },
+                {
+                    "autokicked": false,
+                    "id": "81532497",
+                    "image_url": "http://i.groupme.com/750x750.jpeg.bc1e074f6b0544eca89a0e999766525b",
+                    "muted": false,
+                    "nickname": "Jon Balbarin",
+                    "user_id": "645773"
+                },
+                {
+                    "autokicked": false,
+                    "id": "81532498",
+                    "image_url": null,
+                    "muted": false,
+                    "nickname": "JonSMS",
+                    "user_id": "14215094"
+                }
+            ],
+            "messages": {
+                "count": 5,
+                "last_message_created_at": 1433774903,
+                "last_message_id": "143377490377650755",
+                "preview": {
+                    "attachments": [],
+                    "image_url": "https://i.groupme.com/1276x880.jpeg.727d8450df9f013158d822000b208f7b",
+                    "nickname": "bot stranger",
+                    "text": "fsdafsd"
+                }
+            },
+            "name": "jklkfjdsaf",
+            "office_mode": false,
+            "phone_number": "+1 7248621225",
+            "share_url": null,
+            "type": "private",
+            "updated_at": 1433774903
+        },
+        {
+            "created_at": 1427917894,
+            "creator_user_id": "10140841",
+            "description": "",
+            "group_id": "13221299",
+            "id": "13221299",
+            "image_url": null,
+            "max_members": 200,
+            "members": [
+                {
+                    "autokicked": false,
+                    "id": "81556970",
+                    "image_url": "https://i.groupme.com/1276x880.jpeg.727d8450df9f013158d822000b208f7b",
+                    "muted": false,
+                    "nickname": "bot stranger",
+                    "user_id": "10140841"
+                }
+            ],
+            "messages": {
+                "count": 0,
+                "last_message_created_at": 0,
+                "last_message_id": "",
+                "preview": {
+                    "attachments": [],
+                    "image_url": null,
+                    "nickname": null,
+                    "text": null
+                }
+            },
+            "name": "fasdfd",
+            "office_mode": false,
+            "phone_number": "+1 4804270393",
+            "share_url": null,
+            "type": "private",
+            "updated_at": 1427917894
+        },
+        {
+            "created_at": 1427915633,
+            "creator_user_id": "10140841",
+            "description": "",
+            "group_id": "13220309",
+            "id": "13220309",
+            "image_url": null,
+            "max_members": 200,
+            "members": [
+                {
+                    "autokicked": false,
+                    "id": "81550661",
+                    "image_url": "https://i.groupme.com/1276x880.jpeg.727d8450df9f013158d822000b208f7b",
+                    "muted": false,
+                    "nickname": "bot stranger",
+                    "user_id": "10140841"
+                }
+            ],
+            "messages": {
+                "count": 0,
+                "last_message_created_at": 0,
+                "last_message_id": "",
+                "preview": {
+                    "attachments": [],
+                    "image_url": null,
+                    "nickname": null,
+                    "text": null
+                }
+            },
+            "name": "dsfa",
+            "office_mode": false,
+            "phone_number": "+1 4013719500",
+            "share_url": null,
+            "type": "private",
+            "updated_at": 1427915633
+        },
+        {
+            "created_at": 1427910030,
+            "creator_user_id": "10140841",
+            "description": "",
+            "group_id": "13217997",
+            "id": "13217997",
+            "image_url": null,
+            "max_members": 200,
+            "members": [
+                {
+                    "autokicked": false,
+                    "id": "81534052",
+                    "image_url": "https://i.groupme.com/1276x880.jpeg.727d8450df9f013158d822000b208f7b",
+                    "muted": false,
+                    "nickname": "bot stranger",
+                    "user_id": "10140841"
+                }
+            ],
+            "messages": {
+                "count": 0,
+                "last_message_created_at": 0,
+                "last_message_id": "",
+                "preview": {
+                    "attachments": [],
+                    "image_url": null,
+                    "nickname": null,
+                    "text": null
+                }
+            },
+            "name": "sdfsdf",
+            "office_mode": false,
+            "phone_number": "+1 8452170466",
+            "share_url": null,
+            "type": "private",
+            "updated_at": 1427910030
+        },
+        {
+            "created_at": 1414442113,
+            "creator_user_id": "10140841",
+            "description": "",
+            "group_id": "10799200",
+            "id": "10799200",
+            "image_url": null,
+            "max_members": 200,
+            "members": [
+                {
+                    "autokicked": false,
+                    "id": "63020216",
+                    "image_url": "https://i.groupme.com/1276x880.jpeg.727d8450df9f013158d822000b208f7b",
+                    "muted": false,
+                    "nickname": "bot stranger",
+                    "user_id": "10140841"
+                }
+            ],
+            "messages": {
+                "count": 7,
+                "last_message_created_at": 0,
+                "last_message_id": "141444312420786158",
+                "preview": {
+                    "attachments": [],
+                    "image_url": null,
+                    "nickname": null,
+                    "text": null
+                }
+            },
+            "name": "Tessssdt",
+            "office_mode": false,
+            "phone_number": "+1 3024819935",
+            "share_url": null,
+            "type": "private",
+            "updated_at": 1414443124
+        },
+        {
+            "created_at": 1413490811,
+            "creator_user_id": "10140841",
+            "description": "",
+            "group_id": "10637364",
+            "id": "10637364",
+            "image_url": null,
+            "max_members": 200,
+            "members": [
+                {
+                    "autokicked": false,
+                    "id": "61809638",
+                    "image_url": "https://i.groupme.com/1276x880.jpeg.727d8450df9f013158d822000b208f7b",
+                    "muted": false,
+                    "nickname": "bot stranger",
+                    "user_id": "10140841"
+                }
+            ],
+            "messages": {
+                "count": 2,
+                "last_message_created_at": 0,
+                "last_message_id": "141349082828677024",
+                "preview": {
+                    "attachments": [],
+                    "image_url": null,
+                    "nickname": null,
+                    "text": null
+                }
+            },
+            "name": "Aaaaaa",
+            "office_mode": false,
+            "phone_number": "+1 8644811655",
+            "share_url": null,
+            "type": "private",
+            "updated_at": 1413490828
+        },
+        {
+            "created_at": 1409149921,
+            "creator_user_id": "10140841",
+            "description": "",
+            "group_id": "9717870",
+            "id": "9717870",
+            "image_url": null,
+            "max_members": 200,
+            "members": [
+                {
+                    "autokicked": false,
+                    "id": "54987202",
+                    "image_url": "https://i.groupme.com/1276x880.jpeg.727d8450df9f013158d822000b208f7b",
+                    "muted": false,
+                    "nickname": "bot stranger",
+                    "user_id": "10140841"
+                },
+                {
+                    "autokicked": false,
+                    "id": "55810397",
+                    "image_url": "http://i.groupme.com/750x750.jpeg.bc1e074f6b0544eca89a0e999766525b",
+                    "muted": false,
+                    "nickname": "Jon Balbarin",
+                    "user_id": "645773"
+                }
+            ],
+            "messages": {
+                "count": 9,
+                "last_message_created_at": 0,
+                "last_message_id": "140976046533568288",
+                "preview": {
+                    "attachments": [],
+                    "image_url": null,
+                    "nickname": null,
+                    "text": null
+                }
+            },
+            "name": "New members picker restyled",
+            "office_mode": false,
+            "phone_number": "+1 9207983272",
+            "share_url": "https://groupme.com/join_group/9717870/ejCLHm",
+            "type": "private",
+            "updated_at": 1412000846
+        },
   {
     "id": "1234567890",
     "name": "Family",

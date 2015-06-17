@@ -42,10 +42,4 @@ public class APIClient: NSObject {
         })
         
     }
-    
-//    // fetches DMs Index
-//    func fetchDirectMessages(completion: (NSDictionary -> Void)) {
-//    }
-    
-    
 }

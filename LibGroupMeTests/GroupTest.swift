@@ -23,7 +23,7 @@ class GroupTest: QuickSpec {
                 var dataDict = GroupTestHelper().groupIndex()
                 var groups: Array = Array<Group>()
                 if let groupInfos = dataDict["response"] as? NSArray {
-                    expect(groupInfos.count).to(equal(1))
+                    expect(groupInfos.count).to(equal(9))
                     for info in groupInfos {
                         groups.append(Group(info: info as! NSDictionary))
                     }
@@ -35,7 +35,6 @@ class GroupTest: QuickSpec {
                 for group in groups {
                     expect(group.groupName).toNot(beNil())
                     expect(group.groupDescription).toNot(beNil())
-                    expect(group.groupAvatarURL).toNot(beNil())
                     expect(group.creatorUserID).toNot(beNil())
                     expect(group.createdAt).toNot(beNil())
                     expect(group.updatedAt).toNot(beNil())

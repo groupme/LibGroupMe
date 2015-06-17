@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class PowerupMeta {
+public class PowerupMeta: NSObject, NSCoding {
     private(set) public var info: NSDictionary!
     required public init(info: NSDictionary!) {
         self.info = info
@@ -16,9 +16,17 @@ public class PowerupMeta {
     }
     
     // ...and/or funcs for digging into self.info on the fly
+    required convenience public init(coder decoder: NSCoder) {
+        self.init(info:[:])
+        setupWithCoder(coder: decoder)
+    }
+    
+    public func encodeWithCoder(coder: NSCoder) {
+        encode(coder)
+    }
 }
 
-public class Powerup:NSObject {
+public class Powerup:NSObject, NSCoding {
     
     private(set) public var identifier: String!
     private(set) public var createdAt: NSDate!
@@ -51,5 +59,13 @@ public class Powerup:NSObject {
             self.meta = PowerupMeta(info:metaInfo)
         }
         
+    }
+    required convenience public init(coder decoder: NSCoder) {
+        self.init(info:[:])
+        setupWithCoder(coder: decoder)
+    }
+    
+    public func encodeWithCoder(coder: NSCoder) {
+        encode(coder)
     }
 }

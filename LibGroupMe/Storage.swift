@@ -49,23 +49,50 @@ public class Storage: NSObject {
         super.init()
     }
     
-    public func storeGroups(groups: Array<Group>, completion:(() -> Void)) {
+    private func storeInDefault(array:Array<AnyObject>?, key:String!,completion:(() -> Void)) {
         self.backgroundDBConnection
             .asyncReadWriteWithBlock({ (transaction: YapDatabaseReadWriteTransaction) -> Void in
-                transaction.setObject(groups, forKey: "groups_index", inCollection:"default")
+                transaction.setObject(array, forKey: key, inCollection:"default")
         }, completionBlock: { () -> Void in
             completion()
         })
     }
     
-    public func fetchGroups(completion:(Array<Group>? -> Void)) {
-        var groups:Array<Group>? = nil
+    private func fetchFromDefault(key:String!, completion:(Array<AnyObject>? -> Void)) {
+        var a: Array<AnyObject>? = nil
         self.backgroundDBConnection.asyncReadWithBlock({ (transaction: YapDatabaseReadTransaction) -> Void in
-            if let g = transaction.objectForKey("groups_index", inCollection: "default") as? Array<Group> {
-                groups = g
+            if let o = transaction.objectForKey(key, inCollection: "default") as? Array<AnyObject> {
+                a = o
             }
         }, completionBlock: { () -> Void in
-            completion(groups)
+            completion(a)
+        })
+    }
+    
+    public func storePowerups(powerups: Array<Powerup>, completion:(() -> Void)) {
+        self.storeInDefault(powerups, key: "powerups_index", completion: completion)
+    }
+    public func fetchPowerups(completion:(Array<Powerup>? -> Void)) {
+        self.fetchFromDefault("powerups_index", completion:{(fetched: Array<AnyObject>?) -> Void in
+            if let powerups = fetched as? Array<Powerup> {
+                completion(powerups)
+            } else {
+                completion(nil)
+            }
+        })
+    }
+    
+    public func storeGroups(groups: Array<Group>, completion:(() -> Void)) {
+        self.storeInDefault(groups, key: "groups_index", completion: completion)
+    }
+    
+    public func fetchGroups(completion:(Array<Group>? -> Void)) {
+        self.fetchFromDefault("groups_index", completion:{(fetched: Array<AnyObject>?) -> Void in
+            if let g = fetched as? Array<Group> {
+                completion(g)
+            } else {
+                completion(nil)
+            }
         })
     }
 }

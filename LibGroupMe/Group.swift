@@ -1,6 +1,6 @@
 import Foundation
 
-public class Member: NSObject {
+public class Member: NSObject, NSCoding {
     private(set) public var userID: String!
     private(set) public var nickname: String!
     private(set) public var avatarURL: NSURL?
@@ -17,9 +17,18 @@ public class Member: NSObject {
         }
         super.init()
     }
+    required convenience public init(coder decoder: NSCoder) {
+        self.init(info:[:])
+        setupWithCoder(coder: decoder)
+    }
+    
+    public func encodeWithCoder(coder: NSCoder) {
+        encode(coder)
+    }
+
 }
 
-public class MessagesOverview: NSObject {
+public class MessagesOverview: NSObject, NSCoding {
     private(set) public var count: Int64!
     private(set) public var lastMessageID: String!
     private(set) public var lastMessageCreatedAt: NSDate!
@@ -36,9 +45,18 @@ public class MessagesOverview: NSObject {
         }
         super.init()
     }
+    required convenience public init(coder decoder: NSCoder) {
+        self.init(info:[:])
+        setupWithCoder(coder: decoder)
+    }
+    
+    public func encodeWithCoder(coder: NSCoder) {
+        encode(coder)
+    }
+
 }
 
-public class MessagePreview: NSObject {
+public class MessagePreview: NSObject, NSCoding {
     private(set) public var nickname: String!
     private(set) public var text: String!
     private(set) public var avatarURL: NSURL!
@@ -55,13 +73,23 @@ public class MessagePreview: NSObject {
         }
         super.init()
     }
+    required convenience public init(coder decoder: NSCoder) {
+        self.init(info:[:])
+        setupWithCoder(coder: decoder)
+    }
+    
+    public func encodeWithCoder(coder: NSCoder) {
+        encode(coder)
+    }
+
 }
 
-public class Group: NSObject {
+public class Group: NSObject, NSCoding {
+    
     private(set) public var identifier: String!
     private(set) public var groupName: String!
     private(set) public var groupDescription: String!
-    private(set) public var groupAvatarURL: NSURL!
+    private(set) public var groupAvatarURL: NSURL?
     private(set) public var creatorUserID: String!
     private(set) public var createdAt: NSDate!
     private(set) public var updatedAt: NSDate!
@@ -97,4 +125,13 @@ public class Group: NSObject {
             }
         }
     }
+    required convenience public init(coder decoder: NSCoder) {
+        self.init(info:[:])
+        setupWithCoder(coder: decoder)
+    }
+    
+    public func encodeWithCoder(coder: NSCoder) {
+        encode(coder)
+    }
+
 }

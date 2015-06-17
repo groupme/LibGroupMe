@@ -26,6 +26,8 @@
 		FCADB39F1B30A8B300293947 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCADB39E1B30A8B300293947 /* Group.swift */; };
 		FCADB3A01B30A8B300293947 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCADB39E1B30A8B300293947 /* Group.swift */; };
 		FCB984A01B30D9D200AB6D15 /* StorageTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB9849F1B30D9D200AB6D15 /* StorageTest.swift */; };
+		FCB984A21B31C3F400AB6D15 /* SwiftCoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB984A11B31C3F400AB6D15 /* SwiftCoding.swift */; };
+		FCB984A31B31C3F400AB6D15 /* SwiftCoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB984A11B31C3F400AB6D15 /* SwiftCoding.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +67,7 @@
 		FCA81ABB1B3064B70005B6D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FCADB39E1B30A8B300293947 /* Group.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		FCB9849F1B30D9D200AB6D15 /* StorageTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorageTest.swift; sourceTree = "<group>"; };
+		FCB984A11B31C3F400AB6D15 /* SwiftCoding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftCoding.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,6 +171,7 @@
 		FCA81AAC1B3064B70005B6D7 /* LibGroupMe */ = {
 			isa = PBXGroup;
 			children = (
+				FCB984A11B31C3F400AB6D15 /* SwiftCoding.swift */,
 				FC62425E1B306692008D2CA7 /* Powerup.swift */,
 				FCADB39E1B30A8B300293947 /* Group.swift */,
 				FC62425F1B306692008D2CA7 /* APIClient.swift */,
@@ -472,6 +476,7 @@
 				FC591B811B30CD1300DFB449 /* Storage.swift in Sources */,
 				FC386CFA1B306D67002673B3 /* Powerup.swift in Sources */,
 				FC386CFB1B306D67002673B3 /* APIClient.swift in Sources */,
+				FCB984A31B31C3F400AB6D15 /* SwiftCoding.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -483,6 +488,7 @@
 				FC591B801B30BCF200DFB449 /* Storage.swift in Sources */,
 				FC6242601B306692008D2CA7 /* Powerup.swift in Sources */,
 				FC6242611B306692008D2CA7 /* APIClient.swift in Sources */,
+				FCB984A21B31C3F400AB6D15 /* SwiftCoding.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

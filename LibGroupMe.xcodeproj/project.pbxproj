@@ -25,6 +25,7 @@
 		FCA81AB61B3064B70005B6D7 /* LibGroupMe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCA81AAA1B3064B70005B6D7 /* LibGroupMe.framework */; };
 		FCADB39F1B30A8B300293947 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCADB39E1B30A8B300293947 /* Group.swift */; };
 		FCADB3A01B30A8B300293947 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCADB39E1B30A8B300293947 /* Group.swift */; };
+		FCB984A01B30D9D200AB6D15 /* StorageTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB9849F1B30D9D200AB6D15 /* StorageTest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,7 @@
 		FCA81AB51B3064B70005B6D7 /* LibGroupMeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LibGroupMeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FCA81ABB1B3064B70005B6D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FCADB39E1B30A8B300293947 /* Group.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
+		FCB9849F1B30D9D200AB6D15 /* StorageTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorageTest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -192,6 +194,7 @@
 				FC6242651B3066ED008D2CA7 /* APIClientTest.swift */,
 				FCA81ABA1B3064B70005B6D7 /* Supporting Files */,
 				FC591B7B1B30B6E300DFB449 /* GroupTest.swift */,
+				FCB9849F1B30D9D200AB6D15 /* StorageTest.swift */,
 			);
 			path = LibGroupMeTests;
 			sourceTree = "<group>";
@@ -488,6 +491,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FC6242661B3066ED008D2CA7 /* PowerupTest.swift in Sources */,
+				FCB984A01B30D9D200AB6D15 /* StorageTest.swift in Sources */,
 				FC6242671B3066ED008D2CA7 /* APIClientTest.swift in Sources */,
 				FC591B7C1B30B6E300DFB449 /* GroupTest.swift in Sources */,
 			);

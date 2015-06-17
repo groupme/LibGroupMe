@@ -2,18 +2,25 @@ import LibGroupMe
 import Quick
 import Nimble
 
+
+class GroupTestHelper: NSObject {
+    func groupIndex() -> NSDictionary {
+        let path = NSBundle(forClass: NSClassFromString(self.className)!).pathForResource("groups-index", ofType: "json")
+        let data = NSData(contentsOfFile: path!)
+        var error: NSError?
+        var dataDict = NSJSONSerialization.JSONObjectWithData(data!, options:NSJSONReadingOptions.allZeros, error: &error) as! NSDictionary
+        
+        expect(error).to(beNil())
+        expect(dataDict).toNot(beNil())
+        return dataDict
+    }
+}
+
 class GroupTest: QuickSpec {
     override func spec() {
         describe("a list of group objects") {
-            let path = NSBundle(forClass: NSClassFromString(self.className)!).pathForResource("groups-index", ofType: "json")
-            let data = NSData(contentsOfFile: path!)
-            var error: NSError?
-            var dataDict = NSJSONSerialization.JSONObjectWithData(data!, options:NSJSONReadingOptions.allZeros, error: &error) as! NSDictionary
-            
-            expect(error).to(beNil())
-            expect(dataDict).toNot(beNil())
-            
             it("should generate a good list") {
+                var dataDict = GroupTestHelper().groupIndex()
                 var groups: Array = Array<Group>()
                 if let groupInfos = dataDict["response"] as? NSArray {
                     expect(groupInfos.count).to(equal(1))

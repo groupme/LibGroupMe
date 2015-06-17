@@ -49,6 +49,28 @@ public class Storage: NSObject {
         super.init()
     }
     
+    public func storeGroups(groups: Array<Group>, completion:(() -> Void)) {
+        self.backgroundDBConnection
+            .asyncReadWriteWithBlock({ (transaction: YapDatabaseReadWriteTransaction) -> Void in
+                transaction.setObject(groups, forKey: "groups_index", inCollection:"default")
+        }, completionBlock: { () -> Void in
+            completion()
+        })
+    }
+    
+    public func fetchGroups(completion:(Array<Group>? -> Void)) {
+        var groups:Array<Group>? = nil
+        self.backgroundDBConnection.asyncReadWithBlock({ (transaction: YapDatabaseReadTransaction) -> Void in
+            if let g = transaction.objectForKey("groups_index", inCollection: "default") as? Array<Group> {
+                groups = g
+            }
+        }, completionBlock: { () -> Void in
+            completion(groups)
+        })
+    }
+}
+
+extension Storage {
     public func storeTestData(done:(() -> Void)) {
         self.backgroundDBConnection.asyncReadWriteWithBlock({ (transaction: YapDatabaseReadWriteTransaction) -> Void in
             transaction.setObject("somereallycooltestdata", forKey: "foo", inCollection:"testdata")
@@ -56,10 +78,6 @@ public class Storage: NSObject {
     }
     
     public func fetchTestData(done: ((String?) -> Void)) {
-//        self.backgroundDBConnection.asyncReadWithBlock { (transaction: YapDatabaseReadTransaction) -> Void in
-//            return transaction.objectForKey("foo", inCollection: "testData")
-//        }, completionBlock:done(
-        
         self.backgroundDBConnection.readWithBlock { (transaction: YapDatabaseReadTransaction) -> Void in
             if let d = transaction.objectForKey("foo", inCollection: "testdata") as? String {
                 done(d)
@@ -68,5 +86,4 @@ public class Storage: NSObject {
             }
         }
     }
-    
 }

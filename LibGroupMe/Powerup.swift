@@ -80,6 +80,11 @@ extension Powerup {
             return nil
         }
     }
+    
+    public func urlForCharAtIndex(index:Int) -> NSURL? {
+        return self.stickerFolderURL?.URLByAppendingPathComponent("\(index).png", isDirectory: false)
+    }
+    
     public var stickerFolderURL: NSURL? {
         get {
             if let stickerVariations = self.meta.info["sticker"] as? Array<NSDictionary> {

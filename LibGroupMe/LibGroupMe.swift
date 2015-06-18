@@ -32,11 +32,30 @@ public class GroupMe: NSObject {
             if let powerupInfos = powerupsDict["powerups"] as? NSArray {
                 for p in powerupInfos {
                     updatedPowerups.append(Powerup(info: p as? NSDictionary))
-                    self.storage.storePowerups(updatedPowerups, completion: { () -> Void in
-                    })
                 }
+                self.storage.storePowerups(updatedPowerups, completion: { () -> Void in
+                })
                 updated(updatedPowerups, isFromCache:false)
             }
+        })
+    }
+    
+    public func groupsIndex(updated: ((Array<Group>?, isFromCache:Bool) -> Void)) {
+        self.storage.fetchGroups({(cachedGroups: Array<Group>?) in
+            updated(cachedGroups, isFromCache:true)
+        });
+        self.apiClient.fetchGroups({(groupsDict: NSDictionary) in
+            var groups: Array = Array<Group>()
+            if let groupInfos = groupsDict["response"] as? NSArray {
+                for info in groupInfos {
+                    groups.append(Group(info: info as! NSDictionary))
+                }
+            }
+            
+            self.storage.storeGroups(groups, completion: { () -> Void in
+                
+            })
+            updated(groups, isFromCache:false)
         })
     }
 }

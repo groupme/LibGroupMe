@@ -42,7 +42,7 @@ class APIClientSpec: QuickSpec {
                 
                 let client = APIClient(token:"foo")// doesnt matter because this request wont use it anyway
                 var r: NSDictionary? = nil
-                client.fetchPowerups({ (json) -> (Void) in
+                client.fetchPowerups({(json:NSDictionary?) in
                     r = json
                 })
                 expect(r).toEventuallyNot(beNil())

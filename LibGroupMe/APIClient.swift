@@ -21,7 +21,7 @@ public class APIClient: NSObject {
     
     // fetches Groups Index
     public func fetchGroups(completion: (NSDictionary -> Void)) {
-        self.manager.request(.GET, "https://api.groupme.com/v3/groups")
+        self.manager.request(.GET,  "https://api.groupme.com/v3/groups?per_page=100")
         .responseJSON(options: .AllowFragments, completionHandler:{(req, resp, json, err) -> Void in
             if let jsonResult = json as? NSDictionary {
                 completion(jsonResult)

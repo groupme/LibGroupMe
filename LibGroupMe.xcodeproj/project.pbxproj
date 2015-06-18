@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C308E67B96A46710AB537627 /* Pods_LibGroupMe_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2437437D21D310D30BFE9467 /* Pods_LibGroupMe_iOS.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		D992DE6EBD174C81CD6D9059 /* Pods_LibGroupMeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3FB2D1D2774242175B3B944 /* Pods_LibGroupMeTests.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		DF140AEBFA652E0301E37BD1 /* Pods_LibGroupMe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4F44BADF49B82F24EAA0883 /* Pods_LibGroupMe.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		FC2CABBC1B322EA0008CBC4A /* LibGroupMe.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2CABBB1B322EA0008CBC4A /* LibGroupMe.swift */; };
@@ -45,6 +46,7 @@
 /* Begin PBXFileReference section */
 		1A495F6601E26A1FC52C70C4 /* Pods-LibGroupMeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LibGroupMeTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LibGroupMeTests/Pods-LibGroupMeTests.release.xcconfig"; sourceTree = "<group>"; };
 		21E56790B2449319420437F9 /* Pods-LibGroupMeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LibGroupMeTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LibGroupMeTests/Pods-LibGroupMeTests.debug.xcconfig"; sourceTree = "<group>"; };
+		2437437D21D310D30BFE9467 /* Pods_LibGroupMe_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LibGroupMe_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		39636410B963A48CDD5F80A1 /* Pods-LibGroupMe_iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LibGroupMe_iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-LibGroupMe_iOS/Pods-LibGroupMe_iOS.release.xcconfig"; sourceTree = "<group>"; };
 		73BED4D30B051642E6BCE975 /* Pods-LibGroupMe.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LibGroupMe.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LibGroupMe/Pods-LibGroupMe.debug.xcconfig"; sourceTree = "<group>"; };
 		83ED0AD0E001E803437EDB16 /* Pods-LibGroupMe_iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LibGroupMe_iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LibGroupMe_iOS/Pods-LibGroupMe_iOS.debug.xcconfig"; sourceTree = "<group>"; };
@@ -78,6 +80,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C308E67B96A46710AB537627 /* Pods_LibGroupMe_iOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -106,6 +109,7 @@
 			children = (
 				B4F44BADF49B82F24EAA0883 /* Pods_LibGroupMe.framework */,
 				C3FB2D1D2774242175B3B944 /* Pods_LibGroupMeTests.framework */,
+				2437437D21D310D30BFE9467 /* Pods_LibGroupMe_iOS.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";

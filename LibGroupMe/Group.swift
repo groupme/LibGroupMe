@@ -32,6 +32,7 @@ public class MessagesOverview: NSObject, NSCoding {
     private(set) public var count: Int64!
     private(set) public var lastMessageID: String!
     private(set) public var lastMessageCreatedAt: NSDate!
+    private(set) public var preview: MessagePreview!
     
     required public init(info: NSDictionary) {
         if let c = info["count"] as? Int64 {
@@ -42,6 +43,10 @@ public class MessagesOverview: NSObject, NSCoding {
         }
         if let lastMessageCreatedAt = info["last_message_created_at"] as? NSTimeInterval {
             self.lastMessageCreatedAt = NSDate(timeIntervalSince1970: lastMessageCreatedAt)
+        }
+        
+        if let preview = info["preview"] as? NSDictionary{
+            self.preview = MessagePreview(info: preview)
         }
         super.init()
     }
@@ -94,6 +99,8 @@ public class Group: NSObject, NSCoding {
     private(set) public var createdAt: NSDate!
     private(set) public var updatedAt: NSDate!
     private(set) public var members: Array<Member>!
+    
+    private(set) public var overview: MessagesOverview!
  
     required public init(info: NSDictionary){
         if let identifier = info["id"] as? String {
@@ -116,6 +123,9 @@ public class Group: NSObject, NSCoding {
         }
         if let updated = info["updated_at"] as? NSTimeInterval {
             self.updatedAt = NSDate(timeIntervalSince1970: updated)
+        }
+        if let overview = info["messages"] as? NSDictionary {
+            self.overview = MessagesOverview(info: overview)
         }
         self.members = []
         if let memberList = info["members"] as? Array<NSDictionary> {

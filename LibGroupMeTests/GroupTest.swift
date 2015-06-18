@@ -39,6 +39,8 @@ class GroupTest: QuickSpec {
                     expect(group.createdAt).toNot(beNil())
                     expect(group.updatedAt).toNot(beNil())
                     expect(group.members).toNot(beNil())
+                    expect(group.overview).toNot(beNil())
+                    expect(group.overview.preview).toNot(beNil())
                 }
             }
         }

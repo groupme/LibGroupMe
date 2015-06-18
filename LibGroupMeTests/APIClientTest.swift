@@ -14,7 +14,7 @@ class APIClientSpec: QuickSpec {
                 OHHTTPStubs.stubRequestsPassingTest({ (req: NSURLRequest) -> Bool in
                     let r:NSURLRequest = req
 //                    expect(r.allHTTPHeaderFields).to(equal(["X-Access-Token": "some kinda token"]))
-                    expect(r.URL?.absoluteString).to(equal("https://api.groupme.com/v3/groups"))
+                    expect(r.URL?.absoluteString).to(equal("https://api.groupme.com/v3/groups?per_page=100"))
                     return true
                     }, withStubResponse: { (urlReq) -> OHHTTPStubsResponse in
                         return OHHTTPStubsResponse(data: "{\"foo\": \"bar\", \"biz\": 111}".dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion:true)!, statusCode: 200, headers: nil)

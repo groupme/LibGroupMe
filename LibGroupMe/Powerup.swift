@@ -69,3 +69,49 @@ public class Powerup:NSObject, NSCoding {
         encode(coder)
     }
 }
+
+// extend to do stuff with emoji powerups
+extension Powerup {
+    public var packID: Int? {
+        get {
+            if let pID = self.meta.info["pack_id"]  as? Int {
+                return pID
+            }
+            return nil
+        }
+    }
+    public var stickerFolderURL: NSURL? {
+        get {
+            if let stickerVariations = self.meta.info["sticker"] as? Array<NSDictionary> {
+                var bestURL: NSURL? = nil
+                for variation in stickerVariations {
+                    var max = 0
+                    if let density = variation["density"] as? Int {
+                        if let folderURLString = variation["folder_url"] as? String,
+                        folderURL = NSURL(string: folderURLString)
+                        where density > max {
+                            bestURL = folderURL
+                        }
+                    
+                    }
+                }
+                return bestURL
+            }
+            return nil
+        }
+    }
+    public var transliterations: Array<String>? {
+        get {
+            if let translits =  self.meta.info["transliterations"] as? Array<String> {
+                return translits
+            }
+            return nil
+        }
+    }
+    public var numberOfCharsInPack: Int {
+        if let translits = self.transliterations {
+            return translits.count
+        }
+        return 0
+    }
+}

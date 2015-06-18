@@ -48,6 +48,19 @@ class PowerupTest: QuickSpec {
                     expect(powerup.storeName).toNot(beNil())
                     expect(powerup.storeDescription).toNot(beNil())
                     expect(powerup.meta).toNot(beNil())
+                    
+                    expect(powerup.stickerFolderURL).toNot(beNil())
+                    expect(powerup.packID).to(beGreaterThan(0))
+                    expect(powerup.transliterations).toNot(beNil())
+                    expect(powerup.numberOfCharsInPack).toNot(beNil())
+                    
+                    if let translits = powerup.transliterations as Array<String>!,
+                        stickerFolder = powerup.stickerFolderURL {
+                        for (index, translit) in enumerate(translits) {
+                            var s = stickerFolder.URLByAppendingPathComponent("\(index).png", isDirectory: false)
+                            println("\(powerup.packID!) \(index) - \(translit) - \(s)")
+                        }
+                    }
                 }
                 
             }

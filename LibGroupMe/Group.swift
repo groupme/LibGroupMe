@@ -29,14 +29,14 @@ public class Member: NSObject, NSCoding {
 }
 
 public class MessagesOverview: NSObject, NSCoding {
-    private(set) public var count: Int64!
+    private(set) public var messageCount: NSNumber!
     private(set) public var lastMessageID: String!
     private(set) public var lastMessageCreatedAt: NSDate!
     private(set) public var preview: MessagePreview!
     
     required public init(info: NSDictionary) {
-        if let c = info["count"] as? Int64 {
-            self.count = c
+        if let c = info["count"] as? NSNumber {
+            self.messageCount = c
         }
         if let lastMsg = info["last_message_id"] as? String {
             self.lastMessageID = lastMsg

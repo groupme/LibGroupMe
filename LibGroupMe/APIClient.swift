@@ -25,8 +25,8 @@ public class APIClient: NSObject {
         .responseJSON(options: .AllowFragments, completionHandler:{(req, resp, json, err) -> Void in
             if let jsonResult = json as? NSDictionary {
                 completion(jsonResult)
-            } else {
-                assert(false)
+            } else if err ==  nil {
+                assert(false) // if we get a non-error, with not a 
             }
         })
     }
@@ -36,9 +36,7 @@ public class APIClient: NSObject {
         .responseJSON(options: .AllowFragments, completionHandler:{(req, resp, json, err) -> Void in
             if let jsonResult = json as? NSDictionary {
                 completion(jsonResult)
-            } else {
-                assert(false)
-            }
+            } 
         })
         
     }

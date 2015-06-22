@@ -15,6 +15,8 @@ public class Storage: NSObject {
     private(set) public var database: YapDatabase
     private(set) public var backgroundDBConnection: YapDatabaseConnection
     
+    static public let sharedInstance = Storage(name:"lib-gm-database")
+    
     required public init(name: String) {
         self.name = name
 
@@ -59,13 +61,13 @@ public class Storage: NSObject {
     }
     
     private func fetchFromDefault(key:String!, completion:(Array<AnyObject>? -> Void)) {
-        var a: Array<AnyObject>? = nil
-        self.backgroundDBConnection.asyncReadWithBlock({ (transaction: YapDatabaseReadTransaction) -> Void in
+        self.database.newConnection().asyncReadWithBlock({ (transaction: YapDatabaseReadTransaction) -> Void in
             if let o = transaction.objectForKey(key, inCollection: "default") as? Array<AnyObject> {
-                a = o
+                completion(o)
+            } else {
+                println("huh?")
             }
         }, completionBlock: { () -> Void in
-            completion(a)
         })
     }
     

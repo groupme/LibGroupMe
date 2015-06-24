@@ -29,9 +29,14 @@ public class PowerupMeta: NSObject, NSCoding {
 public class Powerup:NSObject, NSCoding {
     
     private(set) public var identifier: String!
+    /** created timestamp (the date the powerup was launched) */
     private(set) public var createdAt: NSDate!
+    /** last-updated timestamp (last time a char was added/modified e.g. new year's eve glasses with the new year) */
     private(set) public var updatedAt: NSDate!
+    
+    /** human-friendly name for the item, for use in the IAP store; e.g. "Summer Emoji Pack" */
     private(set) public var storeName: String!
+    /** human-friendly description for the item, for use in the IAP store*/
     private(set) public var storeDescription: String!
     private(set) public var meta: PowerupMeta!
     
@@ -70,8 +75,13 @@ public class Powerup:NSObject, NSCoding {
     }
 }
 
-// extend to do stuff with emoji powerups
+
+/**
+    extends `Powerup` to do stuff specifically for emoji packs
+*/
 extension Powerup {
+    
+    /** readable, but not exactly friendly identifier for emoji pack e.g. "summer-pack"*/
     public var packID: Int? {
         get {
             if let pID = self.meta.info["pack_id"]  as? Int {
@@ -81,6 +91,7 @@ extension Powerup {
         }
     }
     
+    /** returns a .png  */
     public func urlForCharAtIndex(index:Int) -> NSURL? {
         return self.stickerFolderURL?.URLByAppendingPathComponent("\(index).png", isDirectory: false)
     }

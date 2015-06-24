@@ -17,6 +17,9 @@ public class Storage: NSObject {
     
     static public let sharedInstance = Storage(name:"lib-gm-database")
     
+    /**
+        :param: name - essentially a name for the .db file that will get created
+    */
     required public init(name: String) {
         self.name = name
 
@@ -65,7 +68,7 @@ public class Storage: NSObject {
             if let o = transaction.objectForKey(key, inCollection: "default") as? Array<AnyObject> {
                 completion(o)
             } else {
-                println("huh?")
+                println("huh?") // FIXME throw an exception here in Swift 2.0
             }
         }, completionBlock: { () -> Void in
         })
@@ -74,6 +77,11 @@ public class Storage: NSObject {
     public func storePowerups(powerups: Array<Powerup>, completion:(() -> Void)) {
         self.storeInDefault(powerups, key: "powerups_index", completion: completion)
     }
+    
+    /**
+        fetches `Powerup` objects asynchonously from the store
+        :param: completion - the block to call back with the fetched powerups   
+    */
     public func fetchPowerups(completion:(Array<Powerup>? -> Void)) {
         self.fetchFromDefault("powerups_index", completion:{(fetched: Array<AnyObject>?) -> Void in
             if let powerups = fetched as? Array<Powerup> {

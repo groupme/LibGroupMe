@@ -10,23 +10,34 @@
 import Foundation
 
 
-// public interface for networking, database access
+/** 
+    public interface for networking, database access
+*/
 public class GroupMe: NSObject {
     
     private(set) public var apiClient : APIClient!
     private(set) public var storage : Storage!
     
+    /**
+        injects independent networking, database storage layers
+    */
     required public init(apiClient: APIClient, storage:Storage) {
         self.apiClient = apiClient
         self.storage = storage
         super.init()
     }
     
-    // calls back updated twice, once with cached data, again with fetched data
+    /**
+        :param: updated - a block that gets called back with results(twice, once with cached data, again with fetched data, with the resultant powerups
+                :param: _ - the list of
+                :param: isFromCache - `true` whether powerups were fetched from database, `false` if they were fetched from network
+    */
     public func powerups(updated: ((Array<Powerup>?, isFromCache:Bool) -> Void)) {
+        
         self.storage.fetchPowerups({(cachedPowerups: Array<Powerup>?) in
             updated(cachedPowerups, isFromCache:true)
         })
+        
         self.apiClient.fetchPowerups({(powerupsDict: NSDictionary) in
             var updatedPowerups: Array = Array<Powerup>()
             if let powerupInfos = powerupsDict["powerups"] as? NSArray {
@@ -40,10 +51,16 @@ public class GroupMe: NSObject {
         })
     }
     
+    /**
+        :param: updated - a block that gets called back with results (twice, once with cached data, again with fetched data, with the resultant groups
+                :param: _ - the list of fetched groups
+                :param: isFromCache - `true` whether powerups were fetched from database, `false` if they were fetched from network
+    */
     public func groupsIndex(updated: ((Array<Group>?, isFromCache:Bool) -> Void)) {
         self.storage.fetchGroups({(cachedGroups: Array<Group>?) in
             updated(cachedGroups, isFromCache:true)
         });
+        
         self.apiClient.fetchGroups({(groupsDict: NSDictionary) in
             var groups: Array = Array<Group>()
             if let groupInfos = groupsDict["response"] as? NSArray {

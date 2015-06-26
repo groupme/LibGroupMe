@@ -2,6 +2,13 @@
 
 ## A hacky Swift framework experiment
 
+### Uses:
+- [GroupMe](https://dev.groupme.com)'s public REST API
+- [Alamofire](https://github.com/Alamofire/Alamofire) for networking
+- [YapDatabase](https://github.com/yapstudios/YapDatabase) as a network cache 
+- [Quick](https://github.com/quick/quick) and [Nimble](https://github.com/quick/nimble) for BDD-style testing
+- [OHHTTPStubs](https://github.com/AliSoftware/OHHTTPStubs) for mocking HTTP responses
+
 
 ## To get started:
 - Install [CocoaPods](http://cocoapods.org/), then 
@@ -35,5 +42,3 @@ pod 'LibGroupMe_iOS', :git => 'https://github.com/jonbalbarin/LibGroupMe.git'
 ````
 
 for iOS projects
-
-

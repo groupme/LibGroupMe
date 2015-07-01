@@ -26,9 +26,8 @@ public class APIClient: NSObject {
         self.manager.session.configuration.HTTPAdditionalHeaders = ["X-Access-Token": self.token]
     }
     
-    /** basic function for asynchronously fetching the first 100 groups from the groups index */
-    public func fetchGroups(completion: (NSDictionary -> Void)) {
-        self.manager.request(.GET,  "https://api.groupme.com/v3/groups?per_page=100")
+    private func basicFetch(urlString: String, completion: (NSDictionary -> Void)) {
+        self.manager.request(.GET, urlString)
         .responseJSON(options: .AllowFragments, completionHandler:{(req, resp, json, err) -> Void in
             if let jsonResult = json as? NSDictionary {
                 completion(jsonResult)
@@ -39,14 +38,17 @@ public class APIClient: NSObject {
         })
     }
     
+    /** basic function for asynchronously fetching the first 100 groups from the groups index */
+    public func fetchGroups(completion: (NSDictionary -> Void)) {
+        self.basicFetch("https://api.groupme.com/v3/groups?per_page=100", completion:completion)
+    }
+    
+    public func fetchDMs(completion: (NSDictionary -> Void)) {
+        self.basicFetch("https://api.groupme.com/v3/chats?per_page=100", completion:completion)
+    }
+    
     /** basic function for asynchronously fetching powerups from the groups index */
     public func fetchPowerups(completion: (NSDictionary -> Void)) {
-        Alamofire.request(.GET, "https://powerup.groupme.com/powerups")
-        .responseJSON(options: .AllowFragments, completionHandler:{(req, resp, json, err) -> Void in
-            if let jsonResult = json as? NSDictionary {
-                completion(jsonResult)
-            } 
-        })
-        
+        self.basicFetch("https://powerup.groupme.com/powerups", completion:completion)
     }
 }

@@ -16,6 +16,10 @@
 		FC386CE61B306D61002673B3 /* LibGroupMe_iOS.h in Headers */ = {isa = PBXBuildFile; fileRef = FC386CE51B306D61002673B3 /* LibGroupMe_iOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FC386CFA1B306D67002673B3 /* Powerup.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC62425E1B306692008D2CA7 /* Powerup.swift */; };
 		FC386CFB1B306D67002673B3 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC62425F1B306692008D2CA7 /* APIClient.swift */; };
+		FC387CFE1B3CF188002972DB /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC387CFD1B3CF188002972DB /* User.swift */; };
+		FC387CFF1B3CF188002972DB /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC387CFD1B3CF188002972DB /* User.swift */; };
+		FC387D021B3CF19D002972DB /* UserTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC387D011B3CF19D002972DB /* UserTest.swift */; };
+		FC387D041B3CF1D1002972DB /* dms-index.json in Resources */ = {isa = PBXBuildFile; fileRef = FC387D031B3CF1D1002972DB /* dms-index.json */; };
 		FC591B7C1B30B6E300DFB449 /* GroupTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC591B7B1B30B6E300DFB449 /* GroupTest.swift */; };
 		FC591B7E1B30B8CB00DFB449 /* groups-index.json in Resources */ = {isa = PBXBuildFile; fileRef = FC591B7D1B30B8CB00DFB449 /* groups-index.json */; };
 		FC591B801B30BCF200DFB449 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC591B7F1B30BCF200DFB449 /* Storage.swift */; };
@@ -58,6 +62,9 @@
 		FC386CE11B306D61002673B3 /* LibGroupMe_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LibGroupMe_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC386CE41B306D61002673B3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FC386CE51B306D61002673B3 /* LibGroupMe_iOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LibGroupMe_iOS.h; sourceTree = "<group>"; };
+		FC387CFD1B3CF188002972DB /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		FC387D011B3CF19D002972DB /* UserTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserTest.swift; sourceTree = "<group>"; };
+		FC387D031B3CF1D1002972DB /* dms-index.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = "dms-index.json"; path = "test-data/dms-index.json"; sourceTree = "<group>"; };
 		FC591B7B1B30B6E300DFB449 /* GroupTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupTest.swift; sourceTree = "<group>"; };
 		FC591B7D1B30B8CB00DFB449 /* groups-index.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = "groups-index.json"; path = "test-data/groups-index.json"; sourceTree = "<group>"; };
 		FC591B7F1B30BCF200DFB449 /* Storage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
@@ -149,6 +156,7 @@
 			children = (
 				FC591B7D1B30B8CB00DFB449 /* groups-index.json */,
 				FC386CB91B306880002673B3 /* powerups.json */,
+				FC387D031B3CF1D1002972DB /* dms-index.json */,
 			);
 			name = "test-data";
 			sourceTree = "<group>";
@@ -186,6 +194,7 @@
 				FCB984A11B31C3F400AB6D15 /* SwiftCoding.swift */,
 				FCA81AAF1B3064B70005B6D7 /* LibGroupMe.h */,
 				FC2CABBB1B322EA0008CBC4A /* LibGroupMe.swift */,
+				FC387CFD1B3CF188002972DB /* User.swift */,
 			);
 			path = LibGroupMe;
 			sourceTree = "<group>";
@@ -207,6 +216,7 @@
 				FCA81ABA1B3064B70005B6D7 /* Supporting Files */,
 				FC591B7B1B30B6E300DFB449 /* GroupTest.swift */,
 				FCB9849F1B30D9D200AB6D15 /* StorageTest.swift */,
+				FC387D011B3CF19D002972DB /* UserTest.swift */,
 			);
 			path = LibGroupMeTests;
 			sourceTree = "<group>";
@@ -361,6 +371,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FC591B7E1B30B8CB00DFB449 /* groups-index.json in Resources */,
+				FC387D041B3CF1D1002972DB /* dms-index.json in Resources */,
 				FC386CBA1B306880002673B3 /* powerups.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -486,6 +497,7 @@
 				FC2CABBD1B322EA0008CBC4A /* LibGroupMe.swift in Sources */,
 				FC386CFB1B306D67002673B3 /* APIClient.swift in Sources */,
 				FCB984A31B31C3F400AB6D15 /* SwiftCoding.swift in Sources */,
+				FC387CFF1B3CF188002972DB /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -499,6 +511,7 @@
 				FC2CABBC1B322EA0008CBC4A /* LibGroupMe.swift in Sources */,
 				FC6242611B306692008D2CA7 /* APIClient.swift in Sources */,
 				FCB984A21B31C3F400AB6D15 /* SwiftCoding.swift in Sources */,
+				FC387CFE1B3CF188002972DB /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -510,6 +523,7 @@
 				FCB984A01B30D9D200AB6D15 /* StorageTest.swift in Sources */,
 				FC6242671B3066ED008D2CA7 /* APIClientTest.swift in Sources */,
 				FC591B7C1B30B6E300DFB449 /* GroupTest.swift in Sources */,
+				FC387D021B3CF19D002972DB /* UserTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

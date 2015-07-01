@@ -2,7 +2,6 @@ import LibGroupMe
 import Quick
 import Nimble
 
-
 class GroupTestHelper: NSObject {
     func groupIndex() -> NSDictionary {
         let path = NSBundle(forClass: NSClassFromString(self.className)!).pathForResource("groups-index", ofType: "json")
@@ -32,6 +31,7 @@ class GroupTest: QuickSpec {
                     fail()
                 }
                 
+                expect(groups.count).to(equal(9))
                 for group in groups {
                     expect(group.groupName).toNot(beNil())
                     expect(group.groupDescription).toNot(beNil())

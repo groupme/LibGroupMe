@@ -1,4 +1,5 @@
 # LibGroupMe
+[![Build Status](https://travis-ci.org/jonbalbarin/LibGroupMe.svg?branch=master)](https://travis-ci.org/jonbalbarin/LibGroupMe)
 
 ## A hacky Swift framework experiment
 

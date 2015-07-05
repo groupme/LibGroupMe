@@ -105,6 +105,20 @@ public class Storage: NSObject {
             }
         })
     }
+    public func storeUsers(users: Array<User>, completion:(() -> Void)) {
+        self.storeInDefault(users, key: "users_index") { () -> Void in
+            completion()
+        }
+    }
+    public func fetchUsers(completion:(Array<User>? -> Void)) {
+        self.fetchFromDefault("users_index", completion:{(fetched: Array<AnyObject>?) -> Void in
+            if let u = fetched as? Array<User> {
+                completion (u)
+            } else {
+                completion(nil)
+            }
+        })
+    }
 }
 
 extension Storage {

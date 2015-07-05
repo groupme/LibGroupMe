@@ -40,6 +40,26 @@ class StorageSpec: QuickSpec     {
                 })
                 expect(fetchedPowerups!.count).toEventually(equal(powerups.count))
             }
+            it("should should store a list of DM users") {
+                var usersJSON = UserTestHelper().dmIndex()
+                var users: Array<User> = Array<User>()
+                if let infos = usersJSON["response"] as? NSArray {
+                    expect(infos.count).to(equal(1))
+                    for info in infos {
+                        users.append(User(info: info as! NSDictionary))
+                    }
+                } else {
+                    fail()
+                }
+                expect(users.count).to(equal(1))
+                var fetchedUsers: Array<User>? = []
+                storage!.storeUsers(users, completion: { () -> Void in
+                    storage!.fetchUsers({(fetched: Array<User>?) in
+                        fetchedUsers = fetched
+                    })
+                })
+                expect(fetchedUsers!.count).toEventually(equal(1))
+            }
         }
     }
 }

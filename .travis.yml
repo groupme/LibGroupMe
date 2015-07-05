@@ -1,0 +1,11 @@
+before_install:
+    - gem install cocoapods --quiet
+    - sleep 2
+
+os: osx
+language: objective-c
+osx_image: beta-xcode6.3
+xcode_workspace: LibGroupMe.xcworkspace
+xcode_scheme: LibGroupMe
+xcode_sdk: macosx10.10
+script: "xcodebuild -sdk macosx10.10 -workspace LibGroupMe.xcworkspace -scheme LibGroupMe clean test"

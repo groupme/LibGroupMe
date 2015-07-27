@@ -10,8 +10,6 @@
 		C308E67B96A46710AB537627 /* Pods_LibGroupMe_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2437437D21D310D30BFE9467 /* Pods_LibGroupMe_iOS.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		D992DE6EBD174C81CD6D9059 /* Pods_LibGroupMeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3FB2D1D2774242175B3B944 /* Pods_LibGroupMeTests.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		DF140AEBFA652E0301E37BD1 /* Pods_LibGroupMe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4F44BADF49B82F24EAA0883 /* Pods_LibGroupMe.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
-		FC198F791B58054E008BF50D /* LibGroupMe-swift.h in Headers */ = {isa = PBXBuildFile; fileRef = FC198F781B58054E008BF50D /* LibGroupMe-swift.h */; };
-		FC198F7A1B58054E008BF50D /* LibGroupMe-swift.h in Headers */ = {isa = PBXBuildFile; fileRef = FC198F781B58054E008BF50D /* LibGroupMe-swift.h */; };
 		FC2CABBC1B322EA0008CBC4A /* LibGroupMe.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2CABBB1B322EA0008CBC4A /* LibGroupMe.swift */; };
 		FC2CABBD1B322EA0008CBC4A /* LibGroupMe.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2CABBB1B322EA0008CBC4A /* LibGroupMe.swift */; };
 		FC386CBA1B306880002673B3 /* powerups.json in Resources */ = {isa = PBXBuildFile; fileRef = FC386CB91B306880002673B3 /* powerups.json */; };
@@ -59,7 +57,6 @@
 		B4F44BADF49B82F24EAA0883 /* Pods_LibGroupMe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LibGroupMe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3FB2D1D2774242175B3B944 /* Pods_LibGroupMeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LibGroupMeTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E49CCE9AD88757B0387918A2 /* Pods-LibGroupMe.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LibGroupMe.release.xcconfig"; path = "Pods/Target Support Files/Pods-LibGroupMe/Pods-LibGroupMe.release.xcconfig"; sourceTree = "<group>"; };
-		FC198F781B58054E008BF50D /* LibGroupMe-swift.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "LibGroupMe-swift.h"; sourceTree = "<group>"; };
 		FC2CABBB1B322EA0008CBC4A /* LibGroupMe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LibGroupMe.swift; sourceTree = "<group>"; };
 		FC386CB91B306880002673B3 /* powerups.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = powerups.json; path = "test-data/powerups.json"; sourceTree = "<group>"; };
 		FC386CE11B306D61002673B3 /* LibGroupMe_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LibGroupMe_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -198,7 +195,6 @@
 				FCA81AAF1B3064B70005B6D7 /* LibGroupMe.h */,
 				FC2CABBB1B322EA0008CBC4A /* LibGroupMe.swift */,
 				FC387CFD1B3CF188002972DB /* User.swift */,
-				FC198F781B58054E008BF50D /* LibGroupMe-swift.h */,
 			);
 			path = LibGroupMe;
 			sourceTree = "<group>";
@@ -240,7 +236,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FC198F7A1B58054E008BF50D /* LibGroupMe-swift.h in Headers */,
 				FC386CE61B306D61002673B3 /* LibGroupMe_iOS.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -249,7 +244,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FC198F791B58054E008BF50D /* LibGroupMe-swift.h in Headers */,
 				FCA81AB01B3064B70005B6D7 /* LibGroupMe.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -548,7 +542,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 83ED0AD0E001E803437EDB16 /* Pods-LibGroupMe_iOS.debug.xcconfig */;
 			buildSettings = {
-				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEFINES_MODULE = YES;
@@ -566,7 +559,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -575,7 +567,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 39636410B963A48CDD5F80A1 /* Pods-LibGroupMe_iOS.release.xcconfig */;
 			buildSettings = {
-				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -633,7 +624,6 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
-				SWIFT_OBJC_BRIDGING_HEADER = "LibGroupMe-swift.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -673,7 +663,6 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
-				SWIFT_OBJC_BRIDGING_HEADER = "LibGroupMe-swift.h";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};

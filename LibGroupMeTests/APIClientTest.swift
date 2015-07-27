@@ -9,7 +9,14 @@ class APIClientSpec: QuickSpec {
             afterEach({ () -> () in
                 OHHTTPStubs.removeAllStubs()
             })
-            
+
+			it("should init a background session manager if needed") {
+				let client = APIClient(token:"tokentokentoken")
+				expect(client.backgroundManager).to(beNil())
+
+				let backgroundClient = APIClient(token: "sometoken", backgroundSessionIdentifier: "anidentifier", sharedContainerIdentifier: "containerid")
+				expect(backgroundClient.backgroundManager).toNot(beNil())
+			}
             it("should grab a dictionary from the groups index") {
                 OHHTTPStubs.stubRequestsPassingTest({ (req: NSURLRequest) -> Bool in
                     let r:NSURLRequest = req

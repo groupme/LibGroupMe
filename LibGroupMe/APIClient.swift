@@ -69,4 +69,48 @@ public class APIClient: NSObject {
     public func fetchPowerups(completion: (NSDictionary -> Void)) {
         self.basicFetch("https://powerup.groupme.com/powerups", completion:completion)
     }
+
+    /**
+    :param: videoData - video data to upload
+    :param: completion - closure for passing a status URL to the video's transcode job - check the URL to see whether the video's been transcoded yet 
+    :param: progress - closure for passing updates as to how much of the video has been uploaded so far, as a NSProgress object
+    */
+    public func putVideo(videoData: NSData,  progress:(NSProgress -> Void), completion: (NSURL? -> Void)) {
+
+		var manager: Manager!
+		if (self.backgroundManager != nil){
+			manager = self.backgroundManager
+		} else {
+			manager = self.manager
+		}
+        // kinda weird to have to tack on headers this way, but seems like they dont get added automatically, 
+        // unlike the standard Manager.request() method
+        manager.upload(Alamofire.Method.POST,  "https://video.groupme.com/transcode", headers:manager.session.configuration.HTTPAdditionalHeaders as? [String: String], multipartFormData:{(formData:MultipartFormData) -> Void in
+           formData.appendBodyPart(data: videoData, name: "file")
+        }, encodingMemoryThreshold: 256, encodingCompletion:{(result: Alamofire.Manager.MultipartFormDataEncodingResult) -> Void in
+            switch result {
+                case let .Success(request, steamingFromDisk, streamFileURL):
+                    println(request)
+                    request.responseJSON(options: .AllowFragments, completionHandler: { (req, resp, json, err) -> Void in
+                        if let j = json as? NSDictionary,
+                            let statusURLString = j["status_url"] as? String,
+                            let statusURL = NSURL(string: statusURLString) as NSURL!{
+                                completion(statusURL)
+                        } else {
+                            completion(nil)
+                        }
+                    })
+                    .progress(closure:{ (bytesWritten, totalBytesWritten, totalBytesExpected) -> Void in
+                        let uploadProgress:NSProgress = NSProgress(totalUnitCount: totalBytesExpected)
+                        uploadProgress.completedUnitCount = totalBytesExpected
+                        progress(uploadProgress)
+                    })
+                
+                case .Failure:
+                    completion(nil)
+                
+            }
+        })
+	}
+
 }

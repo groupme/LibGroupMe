@@ -56,34 +56,6 @@ class APIClientSpec: QuickSpec {
                 expect(r?.allKeys).toEventually(contain("powerups"))
             }
 
-			it("should upload a video and get a transcode id back") {
-                OHHTTPStubs.stubRequestsPassingTest({ (req:NSURLRequest) -> Bool in
-                    let r:NSURLRequest = req
-                    let headers = r.allHTTPHeaderFields;
-                    expect(headers?["X-Access-Token"]).toNot(beNil())
-                    expect(headers?["X-Access-Token"] as! String!).to(equal("foobarbizbaz"))
-                    expect(r.URL?.absoluteString).to(equal("https://video.groupme.com/transcode"))
-                    return true
-                }, withStubResponse: { (urlReq) -> OHHTTPStubsResponse in
-                    let respDict = ["status_url": "https://video.groupme.com/status?job=23074650-41EE-4507-8D9E-11E47368BEF8"];
-                    
-                    
-                    return OHHTTPStubsResponse(JSONObject: respDict, statusCode: 200, headers: nil)
-                })
-                
-                let client = APIClient(token: "foobarbizbaz")
-                
-                let testData = "somefakevideodata".dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true)
-                
-                var statusURL: NSURL? = nil;
-                client.putVideo(testData!, progress:{(progress: NSProgress) in
-                    println("got some progress \(progress)")
-                }, completion:{(s:NSURL?) in
-                    println("got a url \(statusURL)")
-                    statusURL = s
-                })
-                expect(statusURL).toEventuallyNot(beNil())
-			}
         })
     }
 }

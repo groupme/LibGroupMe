@@ -35,6 +35,7 @@
 		FCB984A01B30D9D200AB6D15 /* StorageTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB9849F1B30D9D200AB6D15 /* StorageTest.swift */; };
 		FCB984A21B31C3F400AB6D15 /* SwiftCoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB984A11B31C3F400AB6D15 /* SwiftCoding.swift */; };
 		FCB984A31B31C3F400AB6D15 /* SwiftCoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB984A11B31C3F400AB6D15 /* SwiftCoding.swift */; };
+		FCF036061B6A7BBD008A457E /* APIClientTest_Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF036051B6A7BBD008A457E /* APIClientTest_Video.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,6 +81,7 @@
 		FCADB39E1B30A8B300293947 /* Group.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		FCB9849F1B30D9D200AB6D15 /* StorageTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorageTest.swift; sourceTree = "<group>"; };
 		FCB984A11B31C3F400AB6D15 /* SwiftCoding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftCoding.swift; sourceTree = "<group>"; };
+		FCF036051B6A7BBD008A457E /* APIClientTest_Video.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIClientTest_Video.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -217,6 +219,7 @@
 				FC591B7B1B30B6E300DFB449 /* GroupTest.swift */,
 				FCB9849F1B30D9D200AB6D15 /* StorageTest.swift */,
 				FC387D011B3CF19D002972DB /* UserTest.swift */,
+				FCF036051B6A7BBD008A457E /* APIClientTest_Video.swift */,
 			);
 			path = LibGroupMeTests;
 			sourceTree = "<group>";
@@ -522,6 +525,7 @@
 				FC6242661B3066ED008D2CA7 /* PowerupTest.swift in Sources */,
 				FCB984A01B30D9D200AB6D15 /* StorageTest.swift in Sources */,
 				FC6242671B3066ED008D2CA7 /* APIClientTest.swift in Sources */,
+				FCF036061B6A7BBD008A457E /* APIClientTest_Video.swift in Sources */,
 				FC591B7C1B30B6E300DFB449 /* GroupTest.swift in Sources */,
 				FC387D021B3CF19D002972DB /* UserTest.swift in Sources */,
 			);

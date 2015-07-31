@@ -114,14 +114,11 @@ public class APIClient: NSObject {
 	}
 
 
-	// FIXME consolidate all this into a BackoffStrategy object, use that for a param
-	private func backOffFetch(url:URLRequestConvertible, delay:NSTimeInterval, totalDelay:NSTimeInterval, backOffStatusCode:NSInteger, finishedStatusCode:NSInteger, maxDelay:NSTimeInterval, completion: ((AnyObject?, NSError?) -> Void) ) {
-		self.backOffFetch(url, delay: delay, totalDelay: totalDelay, backOffStatusCode: backOffStatusCode, finishedStatusCode:finishedStatusCode, maxDelay: maxDelay, multiplier: 1, completion:completion)
-	}
 
-	private func backOffFetch(url:URLRequestConvertible, delay:NSTimeInterval, totalDelay:NSTimeInterval, backOffStatusCode:NSInteger, finishedStatusCode:NSInteger, maxDelay:NSTimeInterval, multiplier:NSTimeInterval, completion: ((AnyObject?, NSError?) -> Void)) {
-		var totalDelaySoFar = totalDelay + (delay * multiplier)
-		if totalDelaySoFar > maxDelay {
+    private func backOffFetch(url:URLRequestConvertible, strategy: BackoffStrategy, completion: ((AnyObject?, NSError?) -> Void)) {
+        
+        let delay = strategy.nextDelayInterval()
+        if delay == -1 {
 			completion(nil, NSError(domain: self.className, code: 1, userInfo: [NSLocalizedDescriptionKey: "timed out"]))
 			return
 		}
@@ -134,11 +131,10 @@ public class APIClient: NSObject {
 			}
 			manager?.request(url).responseJSON(options:.AllowFragments, completionHandler: { (req, resp, json, err) -> Void in
 				if let r: NSHTTPURLResponse = resp {
-					if r.statusCode == backOffStatusCode {
-						self.backOffFetch(url, delay: delay, totalDelay: totalDelaySoFar, backOffStatusCode: backOffStatusCode, finishedStatusCode: finishedStatusCode, maxDelay: maxDelay, completion:completion)
+					if r.statusCode == strategy.backoffStatusCode {
+                        self.backOffFetch(url, strategy:strategy,  completion:completion)
                         return
-					} else if r.statusCode == finishedStatusCode {
-						// call completion
+					} else if r.statusCode == strategy.finishedStatusCode {
 						completion(json, nil)
                         return
 					}
@@ -159,7 +155,10 @@ public class APIClient: NSObject {
         
 		if let u = components?.URL as NSURL! {
 			let urlReq = NSURLRequest(URL:u)
-			self.backOffFetch(urlReq, delay: 1, totalDelay: 0, backOffStatusCode: 202, finishedStatusCode: 201, maxDelay: 30, completion:{(anyObj, err) -> Void in
+            
+            let strategy = BackoffStrategy(backoffStatusCode: 202, finishedStatusCode: 201, maxNumberOfTries: 10, multiplier: 1.5)
+            
+            self.backOffFetch(urlReq, strategy:strategy, completion:{(anyObj, err) -> Void in
                 if let d = anyObj as? NSDictionary, v = d["url"] as? String, t = d["thumbnail_url"] as? String {
                     if let vURL = NSURL(string: v) as NSURL!, tURL = NSURL(string: t) as NSURL!{
                         completion(tURL, vURL)

@@ -111,7 +111,6 @@ class APIClient_VideoSpec: QuickSpec {
                 // stub a couple of 202-s before succeeding with a 201
                 OHHTTPStubs.stubRequestsPassingTest({ (req) -> Bool in
                     if req.HTTPMethod == "GET" && req.URL!.absoluteString == self.expectedStatusURLString {
-                        // TODO make sure these requests come at the proper backoff intervals
                         return true
                     }
                     fail()
@@ -135,8 +134,8 @@ class APIClient_VideoSpec: QuickSpec {
                     tURL = thumbURL
                 })
                 // first poll fetch is delayed, so wait more than the default 1s
-                expect(vURL).toEventuallyNot(beNil(), timeout: 4.2, pollInterval: 0.01)
-                expect(tURL).toEventuallyNot(beNil(), timeout: 4.2, pollInterval: 0.01)
+                expect(vURL).toEventuallyNot(beNil(), timeout: 8.2, pollInterval: 0.01)
+                expect(tURL).toEventuallyNot(beNil(), timeout: 8.2, pollInterval: 0.01)
             }
         })
     }

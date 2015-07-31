@@ -87,7 +87,7 @@ public class APIClient: NSObject {
         // unlike the standard Manager.request() method
         manager.upload(Alamofire.Method.POST,  "https://video.groupme.com/transcode", headers:manager.session.configuration.HTTPAdditionalHeaders as? [String: String], multipartFormData:{(formData:MultipartFormData) -> Void in
            formData.appendBodyPart(data: videoData, name: "file")
-        }, encodingMemoryThreshold: 256, encodingCompletion:{(result: Alamofire.Manager.MultipartFormDataEncodingResult) -> Void in
+        }, encodingMemoryThreshold: ((64 * 1024) * 1024), encodingCompletion:{(result: Alamofire.Manager.MultipartFormDataEncodingResult) -> Void in
             switch result {
                 case let .Success(request, steamingFromDisk, streamFileURL):
                     println(request)

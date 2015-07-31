@@ -113,4 +113,64 @@ public class APIClient: NSObject {
         })
 	}
 
+
+
+    private func backOffFetch(url:URLRequestConvertible, strategy: BackoffStrategy, completion: ((AnyObject?, NSError?) -> Void)) {
+        
+        let delay = strategy.nextDelayInterval()
+        if delay == -1 {
+			completion(nil, NSError(domain: self.className, code: 1, userInfo: [NSLocalizedDescriptionKey: "timed out"]))
+			return
+		}
+		dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(delay * Double(NSEC_PER_SEC))), dispatch_get_main_queue(), { () -> Void in
+			var manager: Manager? = nil
+			if (self.backgroundManager != nil){
+				manager = self.backgroundManager
+			} else {
+				manager = self.manager
+			}
+			manager?.request(url).responseJSON(options:.AllowFragments, completionHandler: { (req, resp, json, err) -> Void in
+				if let r: NSHTTPURLResponse = resp {
+					if r.statusCode == strategy.backoffStatusCode {
+                        self.backOffFetch(url, strategy:strategy,  completion:completion)
+                        return
+					} else if r.statusCode == strategy.finishedStatusCode {
+						completion(json, nil)
+                        return
+					}
+                } else {
+                    completion(nil, err)
+                    return
+                }
+                
+			})
+		})
+	}
+
+	public func pollVideoStatus(jobID: String, completion: ((NSURL, NSURL) -> Void)) {
+        
+        var components = NSURLComponents(string: "https://video.groupme.com/status")
+        let queryItem = NSURLQueryItem(name: "job", value: jobID)
+        components?.queryItems = [queryItem]
+        
+		if let u = components?.URL as NSURL! {
+			let urlReq = NSURLRequest(URL:u)
+            
+            let strategy = BackoffStrategy(backoffStatusCode: 202, finishedStatusCode: 201, maxNumberOfTries: 10, multiplier: 1.5)
+            
+            self.backOffFetch(urlReq, strategy:strategy, completion:{(anyObj, err) -> Void in
+                if let d = anyObj as? NSDictionary, v = d["url"] as? String, t = d["thumbnail_url"] as? String {
+                    if let vURL = NSURL(string: v) as NSURL!, tURL = NSURL(string: t) as NSURL!{
+                        completion(tURL, vURL)
+                    } else {
+                        println("got a backoff or error \(anyObj) \(err)")
+                    }
+                    
+                } else {
+                    println("got a backoff or error \(anyObj) \(err)")
+                }
+			})
+		}
+	}
+
 }

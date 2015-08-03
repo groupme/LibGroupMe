@@ -119,7 +119,7 @@ public class APIClient: NSObject {
         
         let delay = strategy.nextDelayInterval()
         if delay == -1 {
-			completion(nil, NSError(domain: self.className, code: 1, userInfo: [NSLocalizedDescriptionKey: "timed out"]))
+			completion(nil, NSError(domain: "APIClient", code: 1, userInfo: [NSLocalizedDescriptionKey: "timed out"]))
 			return
 		}
 		dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(delay * Double(NSEC_PER_SEC))), dispatch_get_main_queue(), { () -> Void in

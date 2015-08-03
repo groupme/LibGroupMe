@@ -7,6 +7,6 @@ Pod::Spec.new do |spec|
   spec.summary      = 'a backend library for groupme, in Swift 1.2'
   spec.source_files = "LibGroupMe/*.swift"
   spec.framework    = 'Foundation'
-  spec.dependency 'Alamofire', '~> 1.2'
+  spec.dependency 'Alamofire', '~> 1.3'
   spec.dependency 'YapDatabase', '~> 2.6'
 end

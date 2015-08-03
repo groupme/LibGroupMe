@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 Jon Balbarin. All rights reserved.
 //
 
-#import <Cocoa/Cocoa.h>
+@import Foundation;
 
 //! Project version number for LibGroupMe.
 FOUNDATION_EXPORT double LibGroupMeVersionNumber;

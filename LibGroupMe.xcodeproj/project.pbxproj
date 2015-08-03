@@ -38,6 +38,10 @@
 		FCB984A01B30D9D200AB6D15 /* StorageTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB9849F1B30D9D200AB6D15 /* StorageTest.swift */; };
 		FCB984A21B31C3F400AB6D15 /* SwiftCoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB984A11B31C3F400AB6D15 /* SwiftCoding.swift */; };
 		FCB984A31B31C3F400AB6D15 /* SwiftCoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB984A11B31C3F400AB6D15 /* SwiftCoding.swift */; };
+		FCC321DA1B70198D0092E330 /* GMPostMessageOperationBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = FCC321D81B70198D0092E330 /* GMPostMessageOperationBuilder.h */; };
+		FCC321DB1B70198D0092E330 /* GMPostMessageOperationBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = FCC321D81B70198D0092E330 /* GMPostMessageOperationBuilder.h */; };
+		FCC321DC1B70198D0092E330 /* GMPostMessageOperationBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = FCC321D91B70198D0092E330 /* GMPostMessageOperationBuilder.m */; };
+		FCC321DD1B70198D0092E330 /* GMPostMessageOperationBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = FCC321D91B70198D0092E330 /* GMPostMessageOperationBuilder.m */; };
 		FCF036061B6A7BBD008A457E /* APIClientTest_Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF036051B6A7BBD008A457E /* APIClientTest_Video.swift */; };
 /* End PBXBuildFile section */
 
@@ -86,6 +90,8 @@
 		FCADB39E1B30A8B300293947 /* Group.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		FCB9849F1B30D9D200AB6D15 /* StorageTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorageTest.swift; sourceTree = "<group>"; };
 		FCB984A11B31C3F400AB6D15 /* SwiftCoding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftCoding.swift; sourceTree = "<group>"; };
+		FCC321D81B70198D0092E330 /* GMPostMessageOperationBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMPostMessageOperationBuilder.h; sourceTree = "<group>"; };
+		FCC321D91B70198D0092E330 /* GMPostMessageOperationBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMPostMessageOperationBuilder.m; sourceTree = "<group>"; };
 		FCF036051B6A7BBD008A457E /* APIClientTest_Video.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIClientTest_Video.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -203,6 +209,8 @@
 				FC2CABBB1B322EA0008CBC4A /* LibGroupMe.swift */,
 				FC387CFD1B3CF188002972DB /* User.swift */,
 				FC5A8FD31B6AB34F0025630E /* BackoffStrategy.swift */,
+				FCC321D81B70198D0092E330 /* GMPostMessageOperationBuilder.h */,
+				FCC321D91B70198D0092E330 /* GMPostMessageOperationBuilder.m */,
 			);
 			path = LibGroupMe;
 			sourceTree = "<group>";
@@ -246,6 +254,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FCC321DB1B70198D0092E330 /* GMPostMessageOperationBuilder.h in Headers */,
 				FC386CE61B306D61002673B3 /* LibGroupMe_iOS.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -254,6 +263,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FCC321DA1B70198D0092E330 /* GMPostMessageOperationBuilder.h in Headers */,
 				FCA81AB01B3064B70005B6D7 /* LibGroupMe.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -502,6 +512,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FCADB3A01B30A8B300293947 /* Group.swift in Sources */,
+				FCC321DD1B70198D0092E330 /* GMPostMessageOperationBuilder.m in Sources */,
 				FC591B811B30CD1300DFB449 /* Storage.swift in Sources */,
 				FC386CFA1B306D67002673B3 /* Powerup.swift in Sources */,
 				FC2CABBD1B322EA0008CBC4A /* LibGroupMe.swift in Sources */,
@@ -517,6 +528,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FCADB39F1B30A8B300293947 /* Group.swift in Sources */,
+				FCC321DC1B70198D0092E330 /* GMPostMessageOperationBuilder.m in Sources */,
 				FC591B801B30BCF200DFB449 /* Storage.swift in Sources */,
 				FC6242601B306692008D2CA7 /* Powerup.swift in Sources */,
 				FC2CABBC1B322EA0008CBC4A /* LibGroupMe.swift in Sources */,
@@ -556,6 +568,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 83ED0AD0E001E803437EDB16 /* Pods-LibGroupMe_iOS.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEFINES_MODULE = YES;
@@ -573,6 +586,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -581,6 +595,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 39636410B963A48CDD5F80A1 /* Pods-LibGroupMe_iOS.release.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;

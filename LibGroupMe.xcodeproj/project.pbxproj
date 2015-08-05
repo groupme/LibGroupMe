@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E82F1A21B71704D0050B076 /* LibGroupMe.h in Headers */ = {isa = PBXBuildFile; fileRef = FCA81AAF1B3064B70005B6D7 /* LibGroupMe.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0E82F1A31B7171F20050B076 /* GMPostMessageOperationBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = FCC321D81B70198D0092E330 /* GMPostMessageOperationBuilder.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		33B34C00192A69E74EA9FECE /* Pods_LibGroupMe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4F44BADF49B82F24EAA0883 /* Pods_LibGroupMe.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		C308E67B96A46710AB537627 /* Pods_LibGroupMe_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2437437D21D310D30BFE9467 /* Pods_LibGroupMe_iOS.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		DF140AEBFA652E0301E37BD1 /* Pods_LibGroupMe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4F44BADF49B82F24EAA0883 /* Pods_LibGroupMe.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
@@ -38,8 +40,7 @@
 		FCB984A01B30D9D200AB6D15 /* StorageTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB9849F1B30D9D200AB6D15 /* StorageTest.swift */; };
 		FCB984A21B31C3F400AB6D15 /* SwiftCoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB984A11B31C3F400AB6D15 /* SwiftCoding.swift */; };
 		FCB984A31B31C3F400AB6D15 /* SwiftCoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB984A11B31C3F400AB6D15 /* SwiftCoding.swift */; };
-		FCC321DA1B70198D0092E330 /* GMPostMessageOperationBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = FCC321D81B70198D0092E330 /* GMPostMessageOperationBuilder.h */; };
-		FCC321DB1B70198D0092E330 /* GMPostMessageOperationBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = FCC321D81B70198D0092E330 /* GMPostMessageOperationBuilder.h */; };
+		FCC321DA1B70198D0092E330 /* GMPostMessageOperationBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = FCC321D81B70198D0092E330 /* GMPostMessageOperationBuilder.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FCC321DC1B70198D0092E330 /* GMPostMessageOperationBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = FCC321D91B70198D0092E330 /* GMPostMessageOperationBuilder.m */; };
 		FCC321DD1B70198D0092E330 /* GMPostMessageOperationBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = FCC321D91B70198D0092E330 /* GMPostMessageOperationBuilder.m */; };
 		FCE6E4931B71099000E4C177 /* GMPostMessageOperationBuilderTest.m in Sources */ = {isa = PBXBuildFile; fileRef = FCE6E4921B71099000E4C177 /* GMPostMessageOperationBuilderTest.m */; };
@@ -259,7 +260,8 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FCC321DB1B70198D0092E330 /* GMPostMessageOperationBuilder.h in Headers */,
+				0E82F1A21B71704D0050B076 /* LibGroupMe.h in Headers */,
+				0E82F1A31B7171F20050B076 /* GMPostMessageOperationBuilder.h in Headers */,
 				FC386CE61B306D61002673B3 /* LibGroupMe_iOS.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -581,10 +583,6 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
 				INFOPLIST_FILE = LibGroupMe_iOS/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;

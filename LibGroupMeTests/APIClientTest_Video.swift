@@ -93,9 +93,10 @@ class APIClient_VideoSpec: QuickSpec {
                 var tURL: NSURL? = nil
 
 				let transcodeJobURL = NSURL(string: self.expectedStatusURLString, relativeToURL: nil) as NSURL!
-                client.pollVideoStatus(transcodeJobURL, completion: {(thumbURL:NSURL, vidURL:NSURL) -> Void in
+				client.pollVideoStatus(transcodeJobURL, completion: {(thumbURL:NSURL?, vidURL:NSURL?, err:NSError?) -> Void in
                     vURL = vidURL
                     tURL = thumbURL
+					expect(err).to(beNil());
                 })
                 // first poll fetch is delayed, so wait more than the default 1s
                 expect(vURL).toEventuallyNot(beNil(), timeout: 1.2, pollInterval: 0.01)
@@ -134,9 +135,10 @@ class APIClient_VideoSpec: QuickSpec {
                 var vURL: NSURL? = nil
                 var tURL: NSURL? = nil
 				let transcodeJobURL = NSURL(string: self.expectedStatusURLString, relativeToURL: nil) as NSURL!
-                client.pollVideoStatus(transcodeJobURL, completion: {(thumbURL:NSURL, vidURL:NSURL) -> Void in
+				client.pollVideoStatus(transcodeJobURL, completion: {(thumbURL:NSURL?, vidURL:NSURL?, err:NSError?) -> Void in
                     vURL = vidURL
                     tURL = thumbURL
+					expect(err).to(beNil());
                 })
                 // first poll fetch is delayed, so wait more than the default 1s
                 expect(vURL).toEventuallyNot(beNil(), timeout: 8.2, pollInterval: 0.01)

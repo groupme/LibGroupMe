@@ -8,7 +8,6 @@
 import Foundation
 import Alamofire
 
-
 public class APIClient: NSObject {
     /** an NSURLSession-backed Alamofire Manager - tacks on the token, etc */
     private(set) public var manager : Manager!
@@ -30,8 +29,7 @@ public class APIClient: NSObject {
 	}
 	required public init(token: String!, backgroundSessionIdentifier: String?, sharedContainerIdentifier: String?) {
         self.token = token
-        self.manager = Manager()
-        self.manager.session.configuration.HTTPAdditionalHeaders = ["X-Access-Token": self.token]
+        self.manager = Manager(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
 
 		if let session = backgroundSessionIdentifier as String! {
 			let backgroundConfig = NSURLSessionConfiguration.backgroundSessionConfigurationWithIdentifier(session)
@@ -44,8 +42,10 @@ public class APIClient: NSObject {
 
     }
     
-    private func basicFetch(urlString: String, completion: (NSDictionary -> Void)) {
-        self.manager.request(.GET, urlString)
+	private func basicFetch(urlString: String, token:Bool = true, completion: (NSDictionary -> Void)) {
+
+		let headers:[String:String] = (token) ? ["X-Access-Token": self.token] : [:]
+		self.manager.request(.GET, urlString, parameters: nil, encoding:.URL, headers:headers)
         .responseJSON(options: .AllowFragments, completionHandler:{(req, resp, json, err) -> Void in
             if let jsonResult = json as? NSDictionary {
                 completion(jsonResult)
@@ -67,7 +67,7 @@ public class APIClient: NSObject {
     
     /** basic function for asynchronously fetching powerups from the groups index */
     public func fetchPowerups(completion: (NSDictionary -> Void)) {
-        self.basicFetch("https://powerup.groupme.com/powerups", completion:completion)
+		self.basicFetch("https://powerup.groupme.com/powerups", token:false, completion:completion)
     }
 
     /**
@@ -75,22 +75,17 @@ public class APIClient: NSObject {
     :param: completion - closure for passing a status URL to the video's transcode job - check the URL to see whether the video's been transcoded yet 
     :param: progress - closure for passing updates as to how much of the video has been uploaded so far, as a NSProgress object
     */
-    public func putVideo(videoData: NSData,  progress:(NSProgress -> Void), completion: (NSURL? -> Void)) {
+	public func putVideo(videoData: NSData,  conversationID: String, progress:(NSProgress -> Void), completion: (NSURL? -> Void)) {
 
-		var manager: Manager!
-		if (self.backgroundManager != nil){
-			manager = self.backgroundManager
-		} else {
-			manager = self.manager
-		}
-        // kinda weird to have to tack on headers this way, but seems like they dont get added automatically, 
-        // unlike the standard Manager.request() method
-        manager.upload(Alamofire.Method.POST,  "https://video.groupme.com/transcode", headers:manager.session.configuration.HTTPAdditionalHeaders as? [String: String], multipartFormData:{(formData:MultipartFormData) -> Void in
-           formData.appendBodyPart(data: videoData, name: "file")
-        }, encodingMemoryThreshold: ((64 * 1024) * 1024), encodingCompletion:{(result: Alamofire.Manager.MultipartFormDataEncodingResult) -> Void in
-            switch result {
+		var uploadHeaders:[String:String] = [
+			"X-Conversation-Id": conversationID,
+			"X-Access-Token": self.token,
+		];
+		self.manager.upload(Alamofire.Method.POST,  "https://video.groupme.com/transcode", headers:uploadHeaders, multipartFormData:{(formData:MultipartFormData) -> Void in
+			formData.appendBodyPart(data: videoData, name: "file", fileName: NSUUID().UUIDString, mimeType:"video/mp4")
+		}, encodingMemoryThreshold:((64 * 1024) * 1024), encodingCompletion:{(result: Alamofire.Manager.MultipartFormDataEncodingResult) -> Void in
+				switch result {
                 case let .Success(request, steamingFromDisk, streamFileURL):
-                    println(request)
                     request.responseJSON(options: .AllowFragments, completionHandler: { (req, resp, json, err) -> Void in
                         if let j = json as? NSDictionary,
                             let statusURLString = j["status_url"] as? String,
@@ -119,17 +114,13 @@ public class APIClient: NSObject {
         
         let delay = strategy.nextDelayInterval()
         if delay == -1 {
-			completion(nil, NSError(domain: self.className, code: 1, userInfo: [NSLocalizedDescriptionKey: "timed out"]))
+			completion(nil, NSError(domain: "APIClient", code: 1, userInfo: [NSLocalizedDescriptionKey: "timed out"]))
 			return
 		}
+		println("fetching after \(delay)")
 		dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(delay * Double(NSEC_PER_SEC))), dispatch_get_main_queue(), { () -> Void in
-			var manager: Manager? = nil
-			if (self.backgroundManager != nil){
-				manager = self.backgroundManager
-			} else {
-				manager = self.manager
-			}
-			manager?.request(url).responseJSON(options:.AllowFragments, completionHandler: { (req, resp, json, err) -> Void in
+			println("fetching")
+			self.manager?.request(url).responseJSON(options:.AllowFragments, completionHandler: { (req, resp, json, err) -> Void in
 				if let r: NSHTTPURLResponse = resp {
 					if r.statusCode == strategy.backoffStatusCode {
                         self.backOffFetch(url, strategy:strategy,  completion:completion)
@@ -138,39 +129,78 @@ public class APIClient: NSObject {
 						completion(json, nil)
                         return
 					}
-                } else {
-                    completion(nil, err)
-                    return
                 }
-                
+				completion(nil, err)
 			})
 		})
 	}
 
-	public func pollVideoStatus(jobID: String, completion: ((NSURL, NSURL) -> Void)) {
-        
-        var components = NSURLComponents(string: "https://video.groupme.com/status")
-        let queryItem = NSURLQueryItem(name: "job", value: jobID)
-        components?.queryItems = [queryItem]
-        
-		if let u = components?.URL as NSURL! {
-			let urlReq = NSURLRequest(URL:u)
-            
-            let strategy = BackoffStrategy(backoffStatusCode: 202, finishedStatusCode: 201, maxNumberOfTries: 10, multiplier: 1.5)
-            
-            self.backOffFetch(urlReq, strategy:strategy, completion:{(anyObj, err) -> Void in
-                if let d = anyObj as? NSDictionary, v = d["url"] as? String, t = d["thumbnail_url"] as? String {
-                    if let vURL = NSURL(string: v) as NSURL!, tURL = NSURL(string: t) as NSURL!{
-                        completion(tURL, vURL)
-                    } else {
-                        println("got a backoff or error \(anyObj) \(err)")
-                    }
-                    
-                } else {
-                    println("got a backoff or error \(anyObj) \(err)")
-                }
-			})
-		}
+	public func pollVideoStatus(transcodeJobURL: NSURL, completion: ((NSURL?, NSURL?, NSError?) -> Void)) {
+		let urlReq = NSMutableURLRequest(URL:transcodeJobURL)
+		urlReq.allHTTPHeaderFields = ["X-Access-Token": self.token]
+
+		let strategy = BackoffStrategy(backoffStatusCode: 202, finishedStatusCode: 201, maxNumberOfTries: 10, multiplier: 1.5)
+		
+		self.backOffFetch(urlReq, strategy:strategy, completion:{(anyObj, err) -> Void in
+			if let d = anyObj as? NSDictionary, v = d["url"] as? String, t = d["thumbnail_url"] as? String {
+				if let vURL = NSURL(string: v) as NSURL!, tURL = NSURL(string: t) as NSURL!{
+					completion(tURL, vURL, nil)
+					return
+				}
+			}
+			completion(nil, nil, err)
+		})
 	}
 
+	private func userAgent() -> String {
+		let bundle:NSBundle = NSBundle(forClass: APIClient.self)
+		var model:String = "Unknown"
+		var osDesc:String = "Unknown"
+		if let locale = NSLocale.currentLocale().objectForKey(NSLocaleIdentifier) as? String,
+			infoDict = bundle.infoDictionary as? [String: AnyObject],
+			vers = infoDict["CFBundleVersion"] as? String {
+
+				let anOS: NSOperatingSystemVersion = NSProcessInfo().operatingSystemVersion
+				let osVersion = String(format:"%d.%d.%d", anOS.majorVersion, anOS.minorVersion, anOS.patchVersion)
+
+				#if os(iOS)
+					model =	UIDevice.currentDevice().model
+					osDesc = "iOS"
+				#else
+					model = "Mac"
+					osDesc = "OS X"
+				#endif
+
+				return String(format:"LibGroupMe/%@ (%@; %@ %@; %@)", vers, model, osDesc, osVersion, locale)
+		}
+
+		return "LibGroupMe/0.0"
+	}
+
+	public func postMessage(builder: GMPostMessageOperationBuilder, completion:((NSError?) -> Void)) {
+
+		var components = NSURLComponents(string: "https://api.groupme.com")
+		components?.path = "/v3/" + builder.path()
+
+		if let url = components?.URL as NSURL!, urlString = url.absoluteString as String! {
+			let request:NSMutableURLRequest = NSMutableURLRequest(URL: url)
+			let dict:NSDictionary = builder.buildPostDictionary()
+			println(dict)
+			var err:NSError?
+
+			var headers:[String:String] = [
+				"X-Access-Token": self.token,
+				"User-Agent": self.userAgent(),
+			]
+			if let paramDict = dict as? [String:AnyObject] {
+				self.manager.request(.POST, url.absoluteString!, parameters:paramDict, encoding:.JSON, headers: headers)
+					.responseJSON(options:.AllowFragments, completionHandler: { (req, resp, json, err) -> Void in
+						println(req.allHTTPHeaderFields)
+						println(req)
+						println("got it? \(json)")
+						completion(err)
+				})
+			}
+		}
+	}
 }

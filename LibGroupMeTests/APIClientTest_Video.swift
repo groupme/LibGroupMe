@@ -40,6 +40,8 @@ class APIClient_VideoSpec: QuickSpec {
 						let headers = r.allHTTPHeaderFields;
 						expect(headers?["X-Access-Token"]).toNot(beNil())
 						expect(headers?["X-Access-Token"] as! String!).to(equal("foobarbizbaz"))
+						expect(headers?["X-Conversation-Id"]).toNot(beNil())
+						expect(headers?["X-Conversation-Id"] as! String!).to(equal("4567"))
 						expect(r.URL?.absoluteString).to(equal("https://video.groupme.com/transcode"))
 						return true
 					}
@@ -55,7 +57,7 @@ class APIClient_VideoSpec: QuickSpec {
                 let testData = "somefakevideodata".dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true)
                 
                 var statusURL: NSURL? = nil;
-                client.putVideo(testData!, progress:{(progress: NSProgress) in
+				client.putVideo(testData!, conversationID:"4567", progress:{(progress: NSProgress) in
                     println("got some progress \(progress)")
                 }, completion:{(s:NSURL?) in
                     println("got a url \(statusURL)")
@@ -89,9 +91,12 @@ class APIClient_VideoSpec: QuickSpec {
                 
                 var vURL: NSURL? = nil
                 var tURL: NSURL? = nil
-                client.pollVideoStatus("23074650-41EE-4507-8D9E-11E47368BEF8", completion: {(thumbURL:NSURL, vidURL:NSURL) -> Void in
+
+				let transcodeJobURL = NSURL(string: self.expectedStatusURLString, relativeToURL: nil) as NSURL!
+				client.pollVideoStatus(transcodeJobURL, completion: {(thumbURL:NSURL?, vidURL:NSURL?, err:NSError?) -> Void in
                     vURL = vidURL
                     tURL = thumbURL
+					expect(err).to(beNil());
                 })
                 // first poll fetch is delayed, so wait more than the default 1s
                 expect(vURL).toEventuallyNot(beNil(), timeout: 1.2, pollInterval: 0.01)
@@ -129,9 +134,11 @@ class APIClient_VideoSpec: QuickSpec {
                 
                 var vURL: NSURL? = nil
                 var tURL: NSURL? = nil
-                client.pollVideoStatus("23074650-41EE-4507-8D9E-11E47368BEF8", completion: {(thumbURL:NSURL, vidURL:NSURL) -> Void in
+				let transcodeJobURL = NSURL(string: self.expectedStatusURLString, relativeToURL: nil) as NSURL!
+				client.pollVideoStatus(transcodeJobURL, completion: {(thumbURL:NSURL?, vidURL:NSURL?, err:NSError?) -> Void in
                     vURL = vidURL
                     tURL = thumbURL
+					expect(err).to(beNil());
                 })
                 // first poll fetch is delayed, so wait more than the default 1s
                 expect(vURL).toEventuallyNot(beNil(), timeout: 8.2, pollInterval: 0.01)

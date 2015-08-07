@@ -6,14 +6,14 @@
 //  Copyright (c) 2015 Jon Balbarin. All rights reserved.
 //
 
-#import <Cocoa/Cocoa.h>
+@import Foundation;
+
+
+// In this header, you should import all the public headers of your framework using statements like #import <LibGroupMe_iOS/PublicHeader.h>
+#import "GMPostMessageOperationBuilder.h"
 
 //! Project version number for LibGroupMe.
 FOUNDATION_EXPORT double LibGroupMeVersionNumber;
 
 //! Project version string for LibGroupMe.
 FOUNDATION_EXPORT const unsigned char LibGroupMeVersionString[];
-
-// In this header, you should import all the public headers of your framework using statements like #import <LibGroupMe/PublicHeader.h>
-
-

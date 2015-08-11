@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E38F7051B7A4706000746B0 /* GMSwiftAPIClientConfiguration.h in Headers */ = {isa = PBXBuildFile; fileRef = 0E38F7031B7A4706000746B0 /* GMSwiftAPIClientConfiguration.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0E38F7061B7A4706000746B0 /* GMSwiftAPIClientConfiguration.h in Headers */ = {isa = PBXBuildFile; fileRef = 0E38F7031B7A4706000746B0 /* GMSwiftAPIClientConfiguration.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0E38F7071B7A4706000746B0 /* GMSwiftAPIClientConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E38F7041B7A4706000746B0 /* GMSwiftAPIClientConfiguration.m */; };
+		0E38F7081B7A4706000746B0 /* GMSwiftAPIClientConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E38F7041B7A4706000746B0 /* GMSwiftAPIClientConfiguration.m */; };
 		0E82F1A21B71704D0050B076 /* LibGroupMe.h in Headers */ = {isa = PBXBuildFile; fileRef = FCA81AAF1B3064B70005B6D7 /* LibGroupMe.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0E82F1A31B7171F20050B076 /* GMPostMessageOperationBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = FCC321D81B70198D0092E330 /* GMPostMessageOperationBuilder.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		33B34C00192A69E74EA9FECE /* Pods_LibGroupMe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4F44BADF49B82F24EAA0883 /* Pods_LibGroupMe.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
@@ -58,6 +62,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0E38F7031B7A4706000746B0 /* GMSwiftAPIClientConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMSwiftAPIClientConfiguration.h; sourceTree = "<group>"; };
+		0E38F7041B7A4706000746B0 /* GMSwiftAPIClientConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMSwiftAPIClientConfiguration.m; sourceTree = "<group>"; };
 		1A495F6601E26A1FC52C70C4 /* Pods-LibGroupMeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LibGroupMeTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LibGroupMeTests/Pods-LibGroupMeTests.release.xcconfig"; sourceTree = "<group>"; };
 		21E56790B2449319420437F9 /* Pods-LibGroupMeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LibGroupMeTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LibGroupMeTests/Pods-LibGroupMeTests.debug.xcconfig"; sourceTree = "<group>"; };
 		2437437D21D310D30BFE9467 /* Pods_LibGroupMe_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LibGroupMe_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -215,6 +221,8 @@
 				FC5A8FD31B6AB34F0025630E /* BackoffStrategy.swift */,
 				FCC321D81B70198D0092E330 /* GMPostMessageOperationBuilder.h */,
 				FCC321D91B70198D0092E330 /* GMPostMessageOperationBuilder.m */,
+				0E38F7031B7A4706000746B0 /* GMSwiftAPIClientConfiguration.h */,
+				0E38F7041B7A4706000746B0 /* GMSwiftAPIClientConfiguration.m */,
 			);
 			path = LibGroupMe;
 			sourceTree = "<group>";
@@ -263,6 +271,7 @@
 				0E82F1A21B71704D0050B076 /* LibGroupMe.h in Headers */,
 				0E82F1A31B7171F20050B076 /* GMPostMessageOperationBuilder.h in Headers */,
 				FC386CE61B306D61002673B3 /* LibGroupMe_iOS.h in Headers */,
+				0E38F7061B7A4706000746B0 /* GMSwiftAPIClientConfiguration.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -270,6 +279,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0E38F7051B7A4706000746B0 /* GMSwiftAPIClientConfiguration.h in Headers */,
 				FCC321DA1B70198D0092E330 /* GMPostMessageOperationBuilder.h in Headers */,
 				FCA81AB01B3064B70005B6D7 /* LibGroupMe.h in Headers */,
 			);
@@ -524,6 +534,7 @@
 				FC386CFA1B306D67002673B3 /* Powerup.swift in Sources */,
 				FC2CABBD1B322EA0008CBC4A /* LibGroupMe.swift in Sources */,
 				FC386CFB1B306D67002673B3 /* APIClient.swift in Sources */,
+				0E38F7081B7A4706000746B0 /* GMSwiftAPIClientConfiguration.m in Sources */,
 				FCB984A31B31C3F400AB6D15 /* SwiftCoding.swift in Sources */,
 				FC387CFF1B3CF188002972DB /* User.swift in Sources */,
 				FC5A8FD51B6AB34F0025630E /* BackoffStrategy.swift in Sources */,
@@ -540,6 +551,7 @@
 				FC6242601B306692008D2CA7 /* Powerup.swift in Sources */,
 				FC2CABBC1B322EA0008CBC4A /* LibGroupMe.swift in Sources */,
 				FC6242611B306692008D2CA7 /* APIClient.swift in Sources */,
+				0E38F7071B7A4706000746B0 /* GMSwiftAPIClientConfiguration.m in Sources */,
 				FCB984A21B31C3F400AB6D15 /* SwiftCoding.swift in Sources */,
 				FC387CFE1B3CF188002972DB /* User.swift in Sources */,
 				FC5A8FD41B6AB34F0025630E /* BackoffStrategy.swift in Sources */,

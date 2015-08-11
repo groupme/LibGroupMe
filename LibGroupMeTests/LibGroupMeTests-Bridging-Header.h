@@ -3,3 +3,4 @@
 //
 
 #import "GMPostMessageOperationBuilder.h"
+#import "GMSwiftAPIClientConfiguration.h"

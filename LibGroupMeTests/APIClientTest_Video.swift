@@ -29,6 +29,10 @@ class APIClient_VideoSpec: QuickSpec {
     }
     
     override func spec() {
+		
+		let config = GMSwiftAPIClientConfiguration.defaultConfigurationWithToken("foobarbizbaz", backgroundSessionIdentifier: nil, sharedContainerIdentifier: nil)
+		let client = APIClient(config: config as protocol<GMSwiftAPIClientConfigurationProtocol>)
+
         describe("uploading video data") {
 			it("should upload a video and get a transcode id back, and poll it until it gets a good result") {
 				let expectedStatusURLString = "https://video.groupme.com/status?job=23074650-41EE-4507-8D9E-11E47368BEF8"
@@ -52,8 +56,7 @@ class APIClient_VideoSpec: QuickSpec {
                     return OHHTTPStubsResponse(JSONObject: respDict, statusCode: 200, headers: nil)
                 })
 
-                let client = APIClient(token: "foobarbizbaz")
-                
+
                 let testData = "somefakevideodata".dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true)
                 
                 var statusURL: NSURL? = nil;
@@ -86,9 +89,7 @@ class APIClient_VideoSpec: QuickSpec {
                 }, withStubResponse: { (req) -> OHHTTPStubsResponse in
                     return self.doneResponse()
                 });
-                
-                let client = APIClient(token:"foo")
-                
+
                 var vURL: NSURL? = nil
                 var tURL: NSURL? = nil
 
@@ -129,9 +130,7 @@ class APIClient_VideoSpec: QuickSpec {
                         }
                         
                 });
-                
-                let client = APIClient(token:"foo")
-                
+
                 var vURL: NSURL? = nil
                 var tURL: NSURL? = nil
 				let transcodeJobURL = NSURL(string: self.expectedStatusURLString, relativeToURL: nil) as NSURL!

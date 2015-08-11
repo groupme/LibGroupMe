@@ -11,6 +11,7 @@
 
 // In this header, you should import all the public headers of your framework using statements like #import <LibGroupMe_iOS/PublicHeader.h>
 #import "GMPostMessageOperationBuilder.h"
+#import "GMSwiftAPIClientConfiguration.h"
 //! Project version number for LibGroupMe_iOS.
 FOUNDATION_EXPORT double LibGroupMe_iOSVersionNumber;
 

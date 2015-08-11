@@ -12,9 +12,7 @@ public class APIClient: NSObject {
     /** an NSURLSession-backed Alamofire Manager - tacks on the token, etc */
     private(set) public var manager : Manager!
     private(set) public var backgroundManager : Manager?
-    
-    /** a GroupMe API auth token for X-Access-Token headers */
-    private(set) public var token: String!
+	private(set) public var configuration: GMSwiftAPIClientConfigurationProtocol
     
     /**
         :param: token - token to use for GroupMe API requests (ignored for requests that do not require authentication)
@@ -24,19 +22,16 @@ public class APIClient: NSObject {
 
 	// TODO change this to accept an optional second  param for `config`
 	// or maybe just background session config identifier / shared container identifier
-	convenience public init(token: String!) {
-		self.init(token:token, backgroundSessionIdentifier:nil, sharedContainerIdentifier:nil)
-	}
-	required public init(token: String!, backgroundSessionIdentifier: String?, sharedContainerIdentifier: String?) {
-        self.token = token
+	required public init(config: GMSwiftAPIClientConfigurationProtocol) {
+		self.configuration = config
         self.manager = Manager(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
 
-		if let session = backgroundSessionIdentifier as String! {
+		if let session = self.configuration.backgroundSessionIdentifier() as String! {
 			let backgroundConfig = NSURLSessionConfiguration.backgroundSessionConfigurationWithIdentifier(session)
-			if let container = sharedContainerIdentifier as String! {
+			if let container = self.configuration.sharedContainerIdentifier() as String! {
 				backgroundConfig.sharedContainerIdentifier = container
 			}
-			backgroundConfig.HTTPAdditionalHeaders = ["X-Access-Token": self.token]
+			backgroundConfig.HTTPAdditionalHeaders = ["X-Access-Token": self.configuration.accessToken()]
 			self.backgroundManager = Alamofire.Manager(configuration: backgroundConfig)
 		}
 
@@ -44,7 +39,7 @@ public class APIClient: NSObject {
     
 	private func basicFetch(urlString: String, token:Bool = true, completion: (NSDictionary -> Void)) {
 
-		let headers:[String:String] = (token) ? ["X-Access-Token": self.token] : [:]
+		let headers:[String:String] = (token) ? ["X-Access-Token": self.configuration.accessToken()] : [:]
 		self.manager.request(.GET, urlString, parameters: nil, encoding:.URL, headers:headers)
         .responseJSON(options: .AllowFragments, completionHandler:{(req, resp, json, err) -> Void in
             if let jsonResult = json as? NSDictionary {
@@ -79,33 +74,35 @@ public class APIClient: NSObject {
 
 		var uploadHeaders:[String:String] = [
 			"X-Conversation-Id": conversationID,
-			"X-Access-Token": self.token,
+			"X-Access-Token": self.configuration.accessToken(),
 		];
-		self.manager.upload(Alamofire.Method.POST,  "https://video.groupme.com/transcode", headers:uploadHeaders, multipartFormData:{(formData:MultipartFormData) -> Void in
-			formData.appendBodyPart(data: videoData, name: "file", fileName: NSUUID().UUIDString, mimeType:"video/mp4")
-		}, encodingMemoryThreshold:((64 * 1024) * 1024), encodingCompletion:{(result: Alamofire.Manager.MultipartFormDataEncodingResult) -> Void in
-				switch result {
-                case let .Success(request, steamingFromDisk, streamFileURL):
-                    request.responseJSON(options: .AllowFragments, completionHandler: { (req, resp, json, err) -> Void in
-                        if let j = json as? NSDictionary,
-                            let statusURLString = j["status_url"] as? String,
-                            let statusURL = NSURL(string: statusURLString) as NSURL!{
-                                completion(statusURL)
-                        } else {
-                            completion(nil)
-                        }
-                    })
-                    .progress(closure:{ (bytesWritten, totalBytesWritten, totalBytesExpected) -> Void in
-                        let uploadProgress:NSProgress = NSProgress(totalUnitCount: totalBytesExpected)
-                        uploadProgress.completedUnitCount = totalBytesExpected
-                        progress(uploadProgress)
-                    })
-                
-                case .Failure:
-                    completion(nil)
-                
-            }
-        })
+		if let videoURL = self.configuration.baseVideoTranscodeURL() as NSURL! {
+			self.manager.upload(Alamofire.Method.POST, videoURL, headers:uploadHeaders, multipartFormData:{(formData:MultipartFormData) -> Void in
+				formData.appendBodyPart(data: videoData, name: "file", fileName: NSUUID().UUIDString, mimeType:"video/mp4")
+			}, encodingMemoryThreshold:((64 * 1024) * 1024), encodingCompletion:{(result: Alamofire.Manager.MultipartFormDataEncodingResult) -> Void in
+					switch result {
+					case let .Success(request, steamingFromDisk, streamFileURL):
+						request.responseJSON(options: .AllowFragments, completionHandler: { (req, resp, json, err) -> Void in
+							if let j = json as? NSDictionary,
+								let statusURLString = j["status_url"] as? String,
+								let statusURL = NSURL(string: statusURLString) as NSURL!{
+									completion(statusURL)
+							} else {
+								completion(nil)
+							}
+						})
+						.progress(closure:{ (bytesWritten, totalBytesWritten, totalBytesExpected) -> Void in
+							let uploadProgress:NSProgress = NSProgress(totalUnitCount: totalBytesExpected)
+							uploadProgress.completedUnitCount = totalBytesExpected
+							progress(uploadProgress)
+						})
+					
+					case .Failure:
+						completion(nil)
+					
+				}
+			})
+		}
 	}
 
 
@@ -137,7 +134,7 @@ public class APIClient: NSObject {
 
 	public func pollVideoStatus(transcodeJobURL: NSURL, completion: ((NSURL?, NSURL?, NSError?) -> Void)) {
 		let urlReq = NSMutableURLRequest(URL:transcodeJobURL)
-		urlReq.allHTTPHeaderFields = ["X-Access-Token": self.token]
+		urlReq.allHTTPHeaderFields = ["X-Access-Token": self.configuration.accessToken()]
 
 		let strategy = BackoffStrategy(backoffStatusCode: 202, finishedStatusCode: 201, maxNumberOfTries: 10, multiplier: 1.5)
 		
@@ -179,8 +176,7 @@ public class APIClient: NSObject {
 
 	public func postMessage(builder: GMPostMessageOperationBuilder, completion:((NSError?) -> Void)) {
 
-		var components = NSURLComponents(string: "https://api.groupme.com")
-		components?.path = "/v3/" + builder.path()
+		let components = NSURLComponents(URL: self.configuration.baseAPIv3URL(), resolvingAgainstBaseURL:false)
 
 		if let url = components?.URL as NSURL!, urlString = url.absoluteString as String! {
 			let request:NSMutableURLRequest = NSMutableURLRequest(URL: url)
@@ -189,7 +185,7 @@ public class APIClient: NSObject {
 			var err:NSError?
 
 			var headers:[String:String] = [
-				"X-Access-Token": self.token,
+				"X-Access-Token": self.configuration.accessToken(),
 				"User-Agent": self.userAgent(),
 			]
 			if let paramDict = dict as? [String:AnyObject] {
